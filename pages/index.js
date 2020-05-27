@@ -1,9 +1,7 @@
+import React from 'react';
 import Head from 'next/head';
-import Nav from './Nav.js';
-import Content from '../components/content.js';
-import Footer from '../components/footer.js';
-import Pet from '../components/pet.js';
-import Link from 'next/link';
+import Nav from '../components/Nav.js';
+import Footer from '../components/Footer.js';
 
 export default function Home() {
   return (
@@ -12,11 +10,7 @@ export default function Home() {
         <title>Ecommerce-Store</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-
       <Nav />
-
-      <Content />
-      <Pet />
 
       <Footer />
 
@@ -32,6 +26,16 @@ export default function Home() {
 
         * {
           box-sizing: border-box;
+        }
+        a{
+          text-decoration:none;
+          color:rgb(33, 24, 155);
+        }
+        a:hover{
+          text-decoration:underline;
+          color:hotpink;
+          font-size:1.1em;
+          font-weight:700;
         }
       `}</style>
     </div>
