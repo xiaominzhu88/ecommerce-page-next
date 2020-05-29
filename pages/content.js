@@ -35,10 +35,10 @@ function Content() {
         <Link href="/Dress">
           <a>
             <img src="/4dress.jpg" width="150px" height="300px" alt="dress" />
-            <h3>Your closet needs at least one yellow dress</h3>
-            <p>“Be original, show off your style, and tell your story.”</p>
           </a>
         </Link>
+        <h3>Your closet needs at least one yellow dress</h3>
+        <p>“Be original, show off your style, and tell your story.”</p>
       </div>
 
       <div className="flowerprint">
@@ -50,10 +50,10 @@ function Content() {
               height="300px"
               alt="flowerprint"
             />
-            <h3>A Sunday well spent brings a Week of Content</h3>
-            <p>Dress like you're Going to meet your Worst Enemy Today</p>
           </a>
         </Link>
+        <h3>A Sunday well spent brings a Week of Content</h3>
+        <p>Dress like you're Going to meet your Worst Enemy Today</p>
       </div>
 
       <div className="jumpsuit">
@@ -65,33 +65,32 @@ function Content() {
               height="300px"
               alt="jumpsuit"
             />
-            <h3>Jumpsuit</h3>
-            <p>
-              Jumpsuit is great for everything from traveling or casual weekend
-              brunch.
-            </p>
           </a>
         </Link>
+        <h3>Jumpsuit</h3>
+        <p>
+          Jumpsuit is great for everything from traveling or casual weekend
+          brunch.
+        </p>
       </div>
 
       <div className="ways">
         <Link href="/Access">
           <a>
             <img src="/access.jpg" width="150px" height="300px" alt="ways" />
-            <h3>Fashion as unique as you are, be your own label...</h3>
-            <p>
-              If you have no idea how to to make the combination with them, be
-              patient, The best things happen Unexpectedly.
-            </p>
           </a>
         </Link>
+        <h3>Fashion as unique as you are, be your own label...</h3>
+        <p>
+          If you have no idea how to to make the combination with them, be
+          patient, The best things happen Unexpectedly.
+        </p>
       </div>
 
       <Footer />
       <style jsx>{`
-      .content {
-        
-      }
+        .content {
+        }
         .slogan {
           text-align: center;
           font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
@@ -136,7 +135,7 @@ function Content() {
         }
 
         .dress img {
-          width:auto;
+          width: auto;
           box-shadow: 0px 3px 3px steelblue;
           margin-top: -40px;
           margin-left: 70%;
@@ -147,7 +146,6 @@ function Content() {
           margin-top: -40px;
           margin-left: 80%;
           width: auto;
-
         }
 
         .jumpsuit img {
@@ -165,7 +163,6 @@ function Content() {
           margin-top: 20px;
           margin-left: 80%;
           width: auto;
-
         }
       `}</style>
     </div>

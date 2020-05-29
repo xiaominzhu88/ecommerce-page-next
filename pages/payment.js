@@ -4,7 +4,16 @@ import Nav from '../components/Nav.js';
 import Footer from '../components/Footer.js';
 
 function Payment() {
-  const trackingNumber = Math.floor(Math.random() * 10000);
+
+  function sumCart() {
+    if (typeof Storage !== 'undefined') {
+      const retrievedObject = localStorage.getItem('Product');
+      return JSON.parse(retrievedObject);
+    } else {
+      alert('sorry ! No web support!');
+    }
+  }
+
   return (
     <div className="payment">
       <Head>
@@ -12,41 +21,41 @@ function Payment() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Nav />
+
+      <ul>
+        <form onChange={sumCart}>
+          <p className="cart">
+            Cart:
+            <span aria-label="emoji" className="emoji" role="img">
+              🛒
+            </span>
+            <li>{}</li>
+          </p>
+        </form>
+      </ul>
+      <hr />
+
+      <p>
+        Total incl. VAT.:
+        <span aria-label="emoji" className="emoji" role="img">
+          🎈 €{' '}
+        </span>{' '}
+        {}
+      </p>
+      <hr />
       <div className="payment">
         <div className="payment-shipment">
           <p>
-            Tracking Number:
-            <span aria-label="emoji" className="emoji" role="img">
-              🔑{trackingNumber}
-            </span>
-          </p>
-          <hr />
-          <p>
-            Card:
-            <span aria-label="emoji" className="emoji" role="img">
-              ⛱
-            </span>
-          </p>
-          <hr />
-          <p>
-            Subtotal delivery:
+            Delivery:
             <span aria-label="emoji" className="emoji" role="img">
               🛫 free
             </span>
           </p>
           <hr />
           <p>
-            Total incl. VAT.:
+            Ships Next Business Day
             <span aria-label="emoji" className="emoji" role="img">
-              🎈 €{' '}
-            </span>{' '}
-            {}
-          </p>
-          <hr />
-          <p>
-          Ships Next Business Day
-            <span aria-label="emoji" className="emoji" role="img">
-               🚀{' '}
+              🚀{' '}
             </span>{' '}
             {}
           </p>
@@ -55,6 +64,9 @@ function Payment() {
       </div>
       <Footer />
       <style jsx>{`
+        .cart {
+          text-decoration-line: underline;
+        }
         .payment-shipment {
           width: 40%;
           margin-top: 5em;
@@ -63,7 +75,7 @@ function Payment() {
           background-color: lightgray;
         }
         .payment {
-          margin: 3em auto;
+          margin: 1em auto;
         }
         p {
           display: flex;

@@ -23,7 +23,7 @@ export function getFashionProducts() {
 export function getPetProducts() {
   return petProducts;
 }
-export default function getUsers() {
+export function getUsers() {
   return users;
 }
 export function getUserById(id) {

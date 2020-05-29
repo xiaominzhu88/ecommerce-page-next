@@ -19,7 +19,7 @@ function Nav() {
         <div className="nav-bar">
           <h1>ZHU</h1>
           <p>FASHION & PET STORE</p>
-        <div className='info'>
+          <div className="info">
             Fashion-Store: {fashionProductsList.length} <br /> Pet-Store:{' '}
             {petProductsList.length}
           </div>
@@ -54,8 +54,6 @@ function Nav() {
               <a>CONTACT</a>
             </Link>
           </h2>
-
-          
         </div>
       </nav>
 
@@ -101,6 +99,8 @@ function Nav() {
           padding:5px;
           border-radius:30%;
           color:orange;
+          margin:0 auto;
+          margin-bottom:1em;
         }
 
         .header {

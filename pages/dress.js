@@ -18,6 +18,15 @@ function Dress() {
     setSize(e.target.value);
   }
 
+  const product = { price, piece, size };
+  function goCart() {
+    if (typeof Storage !== 'undefined') {
+      localStorage.setItem('Product', JSON.stringify(product));
+    } else {
+      alert('sorry ! No web support!');
+    }
+  }
+
   return (
     <div>
       <Head>
@@ -80,12 +89,7 @@ function Dress() {
 
           <Link href="/Payment">
             <a>
-              <button>Checkout</button>
-            </a>
-          </Link>
-          <Link href="/Content">
-            <a>
-              <button className="go-to">Go Fashion</button>
+              <button onClick={goCart}>Checkout</button>
             </a>
           </Link>
         </div>
