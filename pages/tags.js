@@ -2,24 +2,21 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
+import Footer from '../components/Footer.js';
 
-function Access() {
+function Tags() {
   const [price, setPrice] = useState('');
   const [piece, setPiece] = useState('');
-  const [size, setSize] = useState('');
   const [color, setColor] = useState('');
 
   function changePieces(e) {
     setPiece(e.target.value);
   }
-  function showColor(e) {
-    setColor(e.target.value);
+  function showPrice() {
+    setPrice('€' + piece * 15 + ',00');
   }
   function showSize(e) {
-    setSize(e.target.value);
-  }
-  function showPrice() {
-    setPrice('€' + piece * 59 + ',00');
+    setColor(e.target.value);
   }
 
   return (
@@ -30,65 +27,51 @@ function Access() {
       </Head>
       <Nav />
 
-      <div className="access-page">
-        <div className="access-image">
-          <div className="access">
-            <img
-              src="/access.jpg"
-              alt="access"
-              width="250px"
-              height="350px"
-            />
-            <br />
-            <img
-              src="/access1.jpg"
-              alt="access"
-              width="250px"
-              height="350px"
-            />
-            <img
-              src="/access2.jpg"
-              alt="access"
-              width="250px"
-              height="350px"
-            />
-          </div>
+      <div className="tags-page">
+        <div className="tags-image">
+          <img src="/dogge2.jpg" alt="tags" />
+          <br />
+          <img src="/doggetag.jpeg" alt="tags" />
+          <img src="/doggetag2.jpg" alt="tags" />
         </div>
 
         <div>
-          <h2>A way to say who you are without having to speak</h2>
-          <h3>
-            <b>Material </b>
-          </h3>
-          <p>
-            Stainless Steel
-            <br />
-            Silver Plated
-            <br />
-            Gold Plated{' '}
-          </p>
-          <br />
+          <h2>Quick-Tag Pet ID Tags </h2>
+          <ul>
+            <li>
+              Quick-Tag can be engraved with personal information to ensure a
+              safe return. Features a sturdy D-ring that supports all standard
+              leashes
+            </li>
 
+            <br />
+            <br />
+            <li>
+              Dog ID tags that include engraving with up to four lines of
+              personal information
+            </li>
+            <br />
+            <br />
+            <li>
+              Ensures your pet can be properly identified for a safe return
+            </li>
+            <br />
+            <li>Handsome chrome dog name tags in a charming bone shape</li>
+            <br />
+            <li>Helps prevent your pet from becoming lost</li>
+          </ul>
           <hr />
 
-          <p>&#8364;59,00 | each piece</p>
+          <p>&#8364;15,00</p>
           <hr />
           <select onChange={showSize}>
-            <option>Select size</option>
-            <option>S</option>
-            <option>M</option>
-            <option>L</option>
-            <option>XL</option>
-          </select>
-          <select onChange={showColor}>
             <option>Color</option>
             <option>Silver</option>
-            <option>Rose</option>
             <option>Gold</option>
           </select>
           <input
-            type='number'
-            min='1'
+            type="number"
+            min="1"
             placeholder="pieces"
             onChange={changePieces}
             onKeyUp={showPrice}
@@ -97,9 +80,8 @@ function Access() {
           <br />
           <hr />
 
-          <p>Size: {size} </p>
-          <p>Color: {color}</p>
-          <p>Piece: {piece} </p>
+          <p>Color: {color} </p>
+          <p>Qty: {piece} </p>
           <p>Total Price: {price} </p>
           <hr />
 
@@ -108,37 +90,27 @@ function Access() {
               <button>Checkout</button>
             </a>
           </Link>
+          <Link href="/Dogge">
+            <a>
+              <button className="go-to">Go Pet</button>
+            </a>
+          </Link>
         </div>
 
         <style jsx>{`
-          .access-image {
-            display: flex;
-            flex-direction: column;
-            width: 50%;
-            margin-top: 2em;
-          }
-          .access {
-            display: grid;
-            justify-content: space-around;
-            margin-bottom: 2em;
-          }
           img {
-            box-shadow: 0px 5px 5px blue;
+            width: 40%;
+            margin-top: 2em;
+            margin-left: 2em;
           }
-          h2 {
-            color: hotpink;
-          }
-          .access-page {
+          .tags-page {
             display: flex;
             justify-content: space-around;
-            background-image: url('/graybgc.jpeg');
-            align-items:center;
-
+            background-color: lightgray;
+            align-items: center;
+            font-family: monospace;
+            text-align: center;
           }
-          p{
-            letter-spacing:0.1em;
-          }
-
           select {
             border-radius: 5px;
             box-shadow: 2px 3px 3px lightpink;
@@ -146,7 +118,6 @@ function Access() {
             font-size: 1em;
             padding: 5px;
             font-weight: bold;
-            margin-left: 1em;
           }
           input {
             border-radius: 5px;
@@ -156,7 +127,8 @@ function Access() {
             padding: 5px;
             font-weight: bold;
             margin-left: 2em;
-            width: 4em;
+            width: 3em;
+            margin-left: 1em;
           }
           button {
             margin-top: 2em;
@@ -182,10 +154,14 @@ function Access() {
             transition: transformY(4px);
             background-color: rgb(235, 208, 121);
           }
+          .go-to {
+            margin-left: 2em;
+          }
         `}</style>
       </div>
+      <Footer />
     </div>
   );
 }
 
-export default Access;
+export default Tags;

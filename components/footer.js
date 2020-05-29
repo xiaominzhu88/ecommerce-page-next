@@ -15,7 +15,6 @@ function Footer(){
           <button type="subscribe" name="subscribe" value="subscribe">
             subscribe now
           </button>
-          <input type="email" name="email" required />
         </form>
       </div>
       <div className="back">
@@ -29,7 +28,7 @@ function Footer(){
           background-attachment: fixed;
           background-size: 100% 100%;
           padding-bottom: 1em;
-          padding-top: 1em;
+          padding-top: 0.6em;
         }
         .background h2 {
           text-align: center;
@@ -46,6 +45,12 @@ function Footer(){
 
         input {
           margin-left: 1em;
+        }
+        button {
+          height:2em;
+          width:10%;
+          font-weight:bold;
+          cursor:pointer;
         }
       `}</style>
     </>

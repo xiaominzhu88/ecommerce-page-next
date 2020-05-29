@@ -12,7 +12,7 @@ function Jumpsuit() {
     setPiece(e.target.value);
   }
   function showPrice() {
-    setPrice('€' + piece * 79.9 + '0');
+    setPrice('€' + piece * 79 + ',00');
   }
   function showSize(e) {
     setSize(e.target.value);
@@ -54,7 +54,7 @@ function Jumpsuit() {
           </p>
           <hr />
 
-          <p>&#8364;79,90</p>
+          <p>&#8364;79,00</p>
           <hr />
           <select onChange={showSize}>
             <option>Select size</option>

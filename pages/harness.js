@@ -2,20 +2,25 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
+import Footer from '../components/Footer.js';
 
-function Dress() {
+function Harness() {
   const [price, setPrice] = useState('');
   const [piece, setPiece] = useState('');
   const [size, setSize] = useState('');
+  const [color, setColor] = useState('');
 
   function changePieces(e) {
     setPiece(e.target.value);
   }
   function showPrice() {
-    setPrice('€' + piece * 90 + ',00');
+    setPrice('€' + piece * 39 + ',00');
   }
   function showSize(e) {
     setSize(e.target.value);
+  }
+  function showColor(e) {
+    setColor(e.target.value);
   }
 
   return (
@@ -26,41 +31,87 @@ function Dress() {
       </Head>
       <Nav />
 
-      <div className="dress-page">
-        <div className="dress-image">
-          <img src="/yellow-dress.jpg" alt="yellow-dress" />
+      <div className="harness-page">
+        <div className="harness-image">
+          <img
+            src="/dogge1.jpeg"
+            alt="harness"
+            style={{
+              marginLeft: '3%',
+              width: '40%',
+              height: '40%',
+              border: '1px blue solid',
+              boxShadow: '0px 4px 4px blue',
+            }}
+          />
+          <img
+            src="/harness1.jpg"
+            alt="harness"
+            style={{
+              marginTop: '-25px',
+              marginLeft: '-5%',
+              width: '30%',
+              height: '30%',
+              border: '1px gray solid',
+              boxShadow: '0px 4px 4px gray',
+            }}
+          />
+          <img
+            src="/harness2.jpg"
+            alt="harness"
+            style={{
+              marginTop: '-35px',
+              marginLeft: '15%',
+              width: '30%',
+              height: '30%',
+              border: '2px hotpink solid',
+              boxShadow: '0px 4px 4px hotpink',
+            }}
+          />
         </div>
 
         <div>
-          <h2>Guide to the Best Memorial Day Weekend</h2>
-          <p>
-            <b>Material & care instructions</b>
-          </p>
-          <p>
-            Outer fabric material: <br />
-            95% polyamide, 5% elastane
-            <br />
-            <br /> Lining: <br />
-            100% silk
+          <h2>Reversible Dog Harness</h2>
+          <ul>
+            <li>
+              Features a sturdy D-ring that supports all standard leashes
+              Machine-washable, though hand-washing is preferred
+            </li>
             <br />
             <br />
-            <b> Care construction: </b>
+            <li>
+              Designed to fit any dog matching our size guide (see images)
+              safely and securely
+            </li>
             <br />
             <br />
-            Do not tumble dry,
+            <li>
+              Fits comfortably, sliding easily over the dog's head, with padding
+              and an adjustable strap to make sure your dog looks good and feels
+              good
+            </li>
             <br />
-            machine wash at 30 ° C, gentle cycle
-          </p>
+            <li>
+              Made from high-quality neoprene and breathable mesh, with secure,
+              durable buckles
+            </li>
+          </ul>
           <hr />
 
-          <p>&#8364;90,00</p>
+          <p>&#8364;39,00</p>
           <hr />
           <select onChange={showSize}>
             <option>Select size</option>
-            <option>IT 34</option>
-            <option>IT 36</option>
-            <option>IT 38</option>
-            <option>IT 40</option>
+            <option>XS</option>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+          </select>
+          <select onChange={showColor}>
+            <option>Color</option>
+            <option>blue</option>
+            <option>gray</option>
+            <option>colorful</option>
           </select>
           <input
             type="number"
@@ -74,6 +125,7 @@ function Dress() {
           <hr />
 
           <p>Size: {size} </p>
+          <p>Color: {color} </p>
           <p>Piece: {piece} </p>
           <p>Total Price: {price} </p>
           <hr />
@@ -83,25 +135,26 @@ function Dress() {
               <button>Checkout</button>
             </a>
           </Link>
-          <Link href="/Content">
+          <Link href="/Dogge">
             <a>
-              <button className="go-to">Go Fashion</button>
+              <button className="go-to">Go Pet</button>
             </a>
           </Link>
         </div>
 
         <style jsx>{`
-          img {
-            width: 50%;
-            margin-top: 2em;
-            margin-left: 2em;
-          }
-          .dress-page {
+          .harness-page {
             display: flex;
-            justify-content: space-around;
-            background-color: lightgray;
+            justify-content: space-between;
+            background-image: url('/bgc2.jpg');
             align-items: center;
+            font-family: monospace;
+            padding-right: 5em;
+            padding-left: 2em;
+            padding-top: 2em;
+            text-align: center;
           }
+
           select {
             border-radius: 5px;
             box-shadow: 2px 3px 3px lightpink;
@@ -150,8 +203,9 @@ function Dress() {
           }
         `}</style>
       </div>
+      <Footer />
     </div>
   );
 }
 
-export default Dress;
+export default Harness;

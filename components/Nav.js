@@ -1,6 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { getFashionProducts } from '../dbFashion.js';
+import { getPetProducts } from '../dbFashion';
+
+const fashionProductsList = getFashionProducts();
+const petProductsList = getPetProducts();
 
 function Nav() {
   return (
@@ -14,8 +19,11 @@ function Nav() {
         <div className="nav-bar">
           <h1>ZHU</h1>
           <p>FASHION & PET STORE</p>
+        <div className='info'>
+            Fashion-Store: {fashionProductsList.length} <br /> Pet-Store:{' '}
+            {petProductsList.length}
+          </div>
         </div>
-
         <hr />
         <div className="header">
           <h2>
@@ -46,10 +54,14 @@ function Nav() {
               <a>CONTACT</a>
             </Link>
           </h2>
+
+          
         </div>
       </nav>
 
       <style jsx>{`
+
+      
         h1 {
           font-size: 3.5em;
           margin-bottom: 1em;
@@ -67,6 +79,8 @@ function Nav() {
           font-size: 1.8em;
           font-family: Georgia, 'Times New Roman', Times, serif;
           padding-bottom: 1em;
+          text-shadow: 0px 3px 3px blue;
+
         }
         .nav-bar {
           justify-content: space-around;
@@ -77,6 +91,16 @@ function Nav() {
           height: 100%;
           background-attachment: fixed;
           background-size: cover;
+        }
+        .info {
+          text-align:center;
+          font-family: fantasy;
+          font-weight: 600;
+          box-shadow:0px 3px 5px orange;
+          width:18%;
+          padding:5px;
+          border-radius:30%;
+          color:orange;
         }
 
         .header {

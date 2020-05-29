@@ -7,7 +7,7 @@ import { getFashionProducts } from '../dbFashion.js';
 
 const fashionProductsList = getFashionProducts();
 
-function Content(props) {
+function Content() {
   return (
     <div className="content">
       <Head>
@@ -15,19 +15,21 @@ function Content(props) {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Nav />
-
-      <ul>
-        {fashionProductsList.map((list, i) => {
-          return (
-            <li key={list.id}>
-              <span aria-label="emoji" className="emoji" role="img">
-                👗
-              </span>
-              {list.name}
-            </li>
-          );
-        })}
-      </ul>
+      <div className="slogan">
+        <h3>New Arrivals</h3>
+        <ul>
+          {fashionProductsList.map((list, i) => {
+            return (
+              <li key={list.id}>
+                <span aria-label="emoji" className="emoji" role="img">
+                  👗
+                </span>
+                {list.name}
+              </li>
+            );
+          })}
+        </ul>
+      </div>
 
       <div className="dress">
         <Link href="/Dress">
@@ -37,7 +39,6 @@ function Content(props) {
             <p>“Be original, show off your style, and tell your story.”</p>
           </a>
         </Link>
-        <h4>Yellow Dress-inspiration</h4>
       </div>
 
       <div className="flowerprint">
@@ -49,12 +50,8 @@ function Content(props) {
               height="300px"
               alt="flowerprint"
             />
-            <h3>Why not try something more fun?</h3>
-            <p>
-              Flowerprint is a perfect look for spring and summer, but the most
-              crative among us cas surely find ways to work them into winter
-              wardrobes, as well.
-            </p>
+            <h3>A Sunday well spent brings a Week of Content</h3>
+            <p>Dress like you're Going to meet your Worst Enemy Today</p>
           </a>
         </Link>
       </div>
@@ -81,10 +78,10 @@ function Content(props) {
         <Link href="/Access">
           <a>
             <img src="/access.jpg" width="150px" height="300px" alt="ways" />
-            <h3>8 fun ways to accessorize your outfit</h3>
+            <h3>Fashion as unique as you are, be your own label...</h3>
             <p>
-              If you have no idea how to to make the combination with them, just
-              turn on the music.
+              If you have no idea how to to make the combination with them, be
+              patient, The best things happen Unexpectedly.
             </p>
           </a>
         </Link>
@@ -92,129 +89,69 @@ function Content(props) {
 
       <Footer />
       <style jsx>{`
+      .content {
+        
+      }
+        .slogan {
+          text-align: center;
+          font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+          background-color: ivory;
+          padding-bottom: 1em;
+          padding-top: 0.5em;
+        }
         ul {
-          list-style: none;
           display: flex;
-          justify-content: space-around;
-          background-color: lightgray;
-          width: 50%;
+          flex-direction: column;
           margin: 0 auto;
-          font-family: fantasy;
+          list-style: none;
+          padding: 10px;
+          background-color: #fff;
+          box-shadow: 0px 3px 5px steelblue;
+          width: 15%;
+          border-radius: 20%;
+          font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+          text-align: center;
         }
-        li:hover {
-          cursor: pointer;
-          text-decoration: underline;
-          color: hotpink;
-          font-size: 1.1em;
-          font-weight: 700;
-        }
-
-        .dress p {
+        p {
           font-size: 15px;
           color: blue;
           text-decoration-line: underline overline;
           text-align: center;
           padding: 5px;
         }
-        .dress h3 {
-          font-style: italic;
+        h3 {
+          font-family: 'Lucida Console', Monaco, monospace;
           text-align: center;
           padding: 5px;
         }
+        .dress,
+        .flowerprint,
+        .ways,
+        .jumpsuit {
+          box-shadow: 0px 3px 3px gray;
+          margin-bottom: 20px;
+          margin-left: 40px;
+          margin-top: 50px;
+          width: 40%;
+        }
+
         .dress img {
-          box-shadow: 1px 2px 2px 0px;
-          margin-top: 20px;
-          margin-left: 10px;
-          margin-right: 10px;
-          width: auto;
-        }
-        .dress {
-          text-align: center;
-          border: 1px solid gray;
-          box-shadow: 0px 2px 3px 1px;
-          margin-bottom: 20px;
-          margin-left: 40px;
-          margin-top: 50px;
+          width:auto;
+          box-shadow: 0px 3px 3px steelblue;
+          margin-top: -40px;
+          margin-left: 70%;
         }
 
-        .flowerprint {
-          text-align: center;
-          border: 1px solid gray;
-          box-shadow: 0px 2px 3px 1px;
-          margin-bottom: 20px;
-          margin-left: 40px;
-          margin-top: 50px;
-        }
-        .flowerprint h3 {
-          font-style: italic;
-          text-align: center;
-          padding: 5px;
-        }
-        .flowerprint p {
-          font-size: 15px;
-          color: blue;
-          text-decoration-line: underline overline;
-          text-align: center;
-          padding: 5px;
-        }
         .flowerprint img {
           box-shadow: 1px 2px 2px 0px;
-          margin-top: 20px;
-          margin-left: 10px;
-          margin-right: 10px;
+          margin-top: -40px;
+          margin-left: 80%;
           width: auto;
-        }
-        .ways p {
-          text-align: center;
-          padding: 5px;
-        }
-        .ways h3 {
-          font-style: italic;
-          text-align: center;
-          padding: 5px;
-        }
-        .ways p {
-          font-size: 15px;
-          color: blue;
-          text-decoration-line: underline overline;
-          text-align: center;
-          padding: 5px;
-        }
-        .ways {
-          text-align: center;
-          box-shadow: 0px 2px 3px 1px;
-          margin-bottom: 20px;
-          margin-left: 40px;
-          margin-top: 50px;
-        }
-        .ways img {
-          box-shadow: 1px 2px 2px 0px;
-          margin-top: 20px;
-          margin-left: 10px;
-          margin-right: 20px;
-          width: auto;
+
         }
 
-        .jumpsuit {
-          text-align: left;
-          margin-bottom: 20px;
-          margin-left: 10px;
-          margin-top: 50px;
-          align-items: end;
-        }
-        .jumpsuit h3 {
-          text-align: center;
-          padding: 5px;
-        }
-        .jumpsuit p {
-          font-size: 15px;
-          color: blue;
-          text-decoration-line: underline overline;
-          text-align: center;
-          padding: 5px;
-        }
         .jumpsuit img {
-          box-shadow: 1px 2px 2px 0px;
+          box-shadow: 0px 3px 3px hotpink;
           margin-top: 20px;
           margin-left: 10px;
           margin-right: 10px;
@@ -222,6 +159,13 @@ function Content(props) {
           top: 5px;
           left: 200px;
           width: auto;
+        }
+        .ways img {
+          box-shadow: 1px 2px 2px 0px;
+          margin-top: 20px;
+          margin-left: 80%;
+          width: auto;
+
         }
       `}</style>
     </div>

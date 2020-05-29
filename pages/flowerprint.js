@@ -16,7 +16,7 @@ function Flowerprint() {
     setColor(e.target.value);
   }
   function showPrice() {
-    setPrice('€' + piece * 59.90 +'0');
+    setPrice('€' + piece * 59 +',00');
   }
   function showSize(e) {
     setSize(e.target.value);
@@ -77,7 +77,7 @@ function Flowerprint() {
           </p>
           <hr />
 
-          <p>&#8364;59,90</p>
+          <p>&#8364;59,00</p>
           <hr />
           <select onChange={showSize}>
             <option>Select size</option>
