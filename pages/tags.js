@@ -3,6 +3,8 @@ import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
 import Footer from '../components/Footer.js';
+import Cookies from 'js-cookie';
+
 
 function Tags() {
   const [price, setPrice] = useState('');
@@ -17,6 +19,11 @@ function Tags() {
   }
   function showSize(e) {
     setColor(e.target.value);
+  }
+  function goCart() {
+    const product = { name:'Tags',piece: piece, price: price, color: color };
+    Cookies.set('ProductFlower', product);
+    window.location.reload();
   }
 
   return (
@@ -85,11 +92,13 @@ function Tags() {
           <p>Total Price: {price} </p>
           <hr />
 
-          <Link href="/Payment">
+          <button onClick={goCart}>Add to Cart</button>
+          <Link href="/CartForPayment">
             <a>
-              <button>Checkout</button>
+              <button>To Cart</button>
             </a>
           </Link>
+
           <Link href="/Dogge">
             <a>
               <button className="go-to">Go Pet</button>

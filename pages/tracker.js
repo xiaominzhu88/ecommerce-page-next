@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
 
 function Tracker() {
   const [price, setPrice] = useState('');
@@ -17,7 +18,16 @@ function Tracker() {
   function showSize(e) {
     setColor(e.target.value);
   }
-
+  function goCart() {
+    const product = {
+      name: 'Tracker',
+      piece: piece,
+      price: price,
+      color: color,
+    };
+    Cookies.set('ProductTracker', product);
+    window.location.reload();
+  }
   return (
     <div>
       <Head>
@@ -74,10 +84,11 @@ function Tracker() {
           <p>Qty: {piece} </p>
           <p>Total Price: {price} </p>
           <hr />
+          <button onClick={goCart}>Add to Cart</button>
 
-          <Link href="/Payment">
+          <Link href="/CartForPayment">
             <a>
-              <button>Checkout</button>
+              <button>To Cart</button>
             </a>
           </Link>
           <Link href="/Dogge">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
 
 function Dress() {
   const [price, setPrice] = useState('');
@@ -18,13 +19,22 @@ function Dress() {
     setSize(e.target.value);
   }
 
-  const product = { price, piece, size };
+  //LocalStorage
+  //  const product = { price, piece, size };
+  //  function goCart() {
+  //    if (typeof Storage !== 'undefined') {
+  //      localStorage.setItem('Product', JSON.stringify(product));
+  //    } else {
+  //      alert('sorry ! No web support!');
+  //    }
+  //  }
+
+  // set cookies for cart product
+
   function goCart() {
-    if (typeof Storage !== 'undefined') {
-      localStorage.setItem('Product', JSON.stringify(product));
-    } else {
-      alert('sorry ! No web support!');
-    }
+    const product = { name: 'dress', size: size, piece: piece, price: price };
+    Cookies.set('ProductDress', product);
+    window.location.reload();
   }
 
   return (
@@ -83,13 +93,15 @@ function Dress() {
           <hr />
 
           <p>Size: {size} </p>
-          <p>Piece: {piece} </p>
+          <p>Qty: {piece} </p>
           <p>Total Price: {price} </p>
           <hr />
 
-          <Link href="/Payment">
+          <button onClick={goCart}>Add to Cart</button>
+
+          <Link href="/CartForPayment">
             <a>
-              <button onClick={goCart}>Checkout</button>
+              <button>Go Cart</button>
             </a>
           </Link>
         </div>

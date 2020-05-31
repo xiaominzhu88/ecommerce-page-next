@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
 
 function Access() {
   const [price, setPrice] = useState('');
@@ -22,6 +23,18 @@ function Access() {
     setPrice('€' + piece * 59 + ',00');
   }
 
+  function goCart() {
+    const product = {
+      name: 'Accessoires',
+      size: size,
+      piece: piece,
+      price: price,
+      color: color,
+    };
+    Cookies.set('ProductAccessoires', product);
+    window.location.reload();
+  }
+
   return (
     <div>
       <Head>
@@ -33,25 +46,10 @@ function Access() {
       <div className="access-page">
         <div className="access-image">
           <div className="access">
-            <img
-              src="/access.jpg"
-              alt="access"
-              width="250px"
-              height="350px"
-            />
+            <img src="/access.jpg" alt="access" width="250px" height="350px" />
             <br />
-            <img
-              src="/access1.jpg"
-              alt="access"
-              width="250px"
-              height="350px"
-            />
-            <img
-              src="/access2.jpg"
-              alt="access"
-              width="250px"
-              height="350px"
-            />
+            <img src="/access1.jpg" alt="access" width="250px" height="350px" />
+            <img src="/access2.jpg" alt="access" width="250px" height="350px" />
           </div>
         </div>
 
@@ -87,8 +85,8 @@ function Access() {
             <option>Gold</option>
           </select>
           <input
-            type='number'
-            min='1'
+            type="number"
+            min="1"
             placeholder="pieces"
             onChange={changePieces}
             onKeyUp={showPrice}
@@ -99,13 +97,13 @@ function Access() {
 
           <p>Size: {size} </p>
           <p>Color: {color}</p>
-          <p>Piece: {piece} </p>
+          <p>Qty: {piece} </p>
           <p>Total Price: {price} </p>
           <hr />
-
-          <Link href="/Payment">
+          <button onClick={goCart}>Add to Cart</button>
+          <Link href="/CartForPayment">
             <a>
-              <button>Checkout</button>
+              <button>To Cart</button>
             </a>
           </Link>
         </div>
@@ -132,11 +130,10 @@ function Access() {
             display: flex;
             justify-content: space-around;
             background-image: url('/graybgc.jpeg');
-            align-items:center;
-
+            align-items: center;
           }
-          p{
-            letter-spacing:0.1em;
+          p {
+            letter-spacing: 0.1em;
           }
 
           select {

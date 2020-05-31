@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
 import Footer from '../components/Footer.js';
+import cookies from 'js-cookie';
 
 function Harness() {
   const [price, setPrice] = useState('');
@@ -23,14 +24,16 @@ function Harness() {
     setColor(e.target.value);
   }
 
-  const product = { price, piece, size };
-
   function goCart() {
-    if (typeof Storage !== 'undefined') {
-      localStorage.setItem('Product', JSON.stringify(product));
-    } else {
-      alert('sorry ! No web support!');
-    }
+    const product = {
+      name: 'Harness',
+      price: price,
+      size: size,
+      piece: piece,
+      color: color,
+    };
+    cookies.set('ProductHarness', product);
+    window.location.reload();
   }
 
   return (
@@ -136,15 +139,15 @@ function Harness() {
 
           <p>Size: {size} </p>
           <p>Color: {color} </p>
-          <p>Piece: {piece} </p>
+          <p>Qty: {piece} </p>
           <p>Total Price: {price} </p>
           <hr />
 
-          <Link href="/Payment">
+          <button onClick={goCart}>Add to Cart</button>
+
+          <Link href="/CartForPayment">
             <a>
-              <button onClick={goCart} product={product}>
-                Checkout
-              </button>
+              <button>To Cart</button>
             </a>
           </Link>
           <Link href="/Dogge">

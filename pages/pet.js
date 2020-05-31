@@ -5,6 +5,7 @@ import Nav from '../components/Nav.js';
 import Link from 'next/link';
 import { getPetProducts } from '../dbFashion.js';
 
+// Page that links to dogge page
 const petProducts = getPetProducts();
 
 function Pet() {
@@ -34,23 +35,24 @@ function Pet() {
       <hr />
       <div className="dog">
         <ul>
-          {petProducts.map((pet, i) => {
+          {petProducts.map((pet) => {
             return (
-              <Link href="/Dogge">
-                <a>
-                  <li>
+              <li key={pet.id}>
+                <Link href="/Dogge">
+                  <a>
                     <img
-                      src={pet.url}
-                      alt="pet"
+                      className={pet.className}
+                      src={pet.src}
+                      alt={pet.className}
                       style={{
                         width: '10em',
                         height: '10em',
                         borderRadius: '50%',
                       }}
                     />
-                  </li>
-                </a>
-              </Link>
+                  </a>
+                </Link>
+              </li>
             );
           })}
         </ul>

@@ -1,13 +1,33 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
+
 import { getFashionProducts } from '../dbFashion.js';
 import { getPetProducts } from '../dbFashion';
 
 const fashionProductsList = getFashionProducts();
 const petProductsList = getPetProducts();
 
+const cartSum = [
+  Cookies.get('ProductDress'),
+  Cookies.get('ProductJumpsuit'),
+  Cookies.get('ProductFlower'),
+  Cookies.get('ProductHarness'),
+  Cookies.get('ProductAccessoires'),
+  Cookies.get('ProductTags'),
+  Cookies.get('ProductTracker'),
+];
+
 function Nav() {
+  const linkList = [
+    { name: 'HOME', url: '/' },
+    { name: 'ABOUT', url: '/about' },
+    { name: 'FASHION-STORE', url: '/content' },
+    { name: 'PET-STORE', url: '/pet' },
+    { name: 'USERS', url: '/users' },
+    { name: 'CONTACT', url: '/contact' },
+  ];
   return (
     <>
       <Head>
@@ -22,44 +42,59 @@ function Nav() {
           <div className="info">
             Fashion-Store: {fashionProductsList.length} <br /> Pet-Store:{' '}
             {petProductsList.length}
+            <br /> In Cart: {cartSum.length}
           </div>
         </div>
-        <hr />
+
         <div className="header">
-          <h2>
-            <Link href="/index">
-              <a>HOME</a>
-            </Link>
-          </h2>
-
-          <h2>
-            <Link href="/about">
-              <a>ABOUT</a>
-            </Link>
-          </h2>
-
-          <h2>
-            <Link href="/content">
-              <a>FASHION-STORE</a>
-            </Link>
-          </h2>
-          <h2>
-            <Link href="/pet">
-              <a>PET-STORE</a>
-            </Link>
-          </h2>
-
-          <h2>
-            <Link href="/contact">
-              <a>CONTACT</a>
-            </Link>
-          </h2>
+          {linkList.map((link) => {
+            return (
+              <Link href={link.url} key={link.url}>
+                <a>{link.name}</a>
+              </Link>
+            );
+          })}
+          <Link href="/cartForPayment">
+            <a>
+              <span aria-label="emoji" className="emoji" role="img">
+                🛒
+              </span>{' '}
+              <span style={{ color: 'red',marginLeft:'0.5em' }}>Shopping CART: </span>{' '}
+              <span
+                style={{
+                  fontSize: '1.8em',
+                  borderRadius: '5px',
+                  backgroundColor: '#21a10a',
+                  color: '#fff',
+                  padding: '0.3em',
+                  marginLeft: '0.6em',
+                }}
+              >
+                {cartSum.length}
+              </span>
+            </a>
+          </Link>
         </div>
       </nav>
 
       <style jsx>{`
+        .nav {
+          margin-bottom: 2em;
+        }
+        a {
+          text-decoration: none;
+          color: mediumblue;
+          font-size: 1.2em;
+          font-weight: 700;
+          line-height: 1em;
+        }
+        a:hover {
+          text-decoration: underline;
+          color: hotpink;
+          font-weight: 700;
+          font-size: 1.2em;
+        }
 
-      
         h1 {
           font-size: 3.5em;
           margin-bottom: 1em;
@@ -78,7 +113,7 @@ function Nav() {
           font-family: Georgia, 'Times New Roman', Times, serif;
           padding-bottom: 1em;
           text-shadow: 0px 3px 3px blue;
-
+          font-weight: 700;
         }
         .nav-bar {
           justify-content: space-around;
@@ -91,16 +126,15 @@ function Nav() {
           background-size: cover;
         }
         .info {
-          text-align:center;
+          text-align: center;
           font-family: fantasy;
           font-weight: 600;
-          box-shadow:0px 3px 5px orange;
-          width:18%;
-          padding:5px;
-          border-radius:30%;
-          color:orange;
-          margin:0 auto;
-          margin-bottom:1em;
+          box-shadow: 0px 3px 5px orange;
+          width: 18%;
+          padding: 5px;
+          border-radius: 30%;
+          color: orange;
+          margin-bottom: 2em;
         }
 
         .header {
@@ -115,18 +149,6 @@ function Nav() {
           position: relative;
           top: 10px;
         }
-        .nav {
-          margin-bottom: 2em;
-        }
-        a{
-          text-decoration:none;
-          color:rgb(33, 24, 155);
-        }
-        a:hover{
-          text-decoration:underline;
-          color:hotpink;
-          font-size:1.1em;
-          font-weight:700;
       `}</style>
     </>
   );

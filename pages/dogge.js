@@ -3,6 +3,11 @@ import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
 import Footer from '../components/Footer.js';
+import { getPetProducts } from '../dbFashion';
+
+// Page that links to each item page
+const petLists = getPetProducts();
+
 
 function Dogge() {
   return (
@@ -14,21 +19,23 @@ function Dogge() {
       <Nav />
 
       <div className="dogge-page">
-        <Link href="/Harness">
-          <a>
-            <img className="d1" src="/dogge1.jpeg" alt="dogge" />
-          </a>
-        </Link>
-        <Link href="/Tags">
-          <a>
-            <img className="d2" src="/dogge2.jpg" alt="dogge" />
-          </a>
-        </Link>
-        <Link href="/Tracker">
-          <a>
-            <img className="d3" src="/dogge3.jpg" alt="dogge" />
-          </a>
-        </Link>
+        <ul>
+          {petLists.map((list) => {
+            return (
+              <li key={list.id}>
+                <Link href={list.url}>
+                  <a>
+                    <img
+                      className={list.className}
+                      src={list.src}
+                      alt={list.className}
+                    />
+                  </a>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </div>
 
       <Footer />
@@ -52,7 +59,7 @@ function Dogge() {
           grid-area: thirdRow;
         }
 
-        .dogge-page {
+        ul {
           display: grid;
           grid-template-areas:
             'firstRow . .'
@@ -62,6 +69,7 @@ function Dogge() {
           background-image: url('/bgcCool.jpg');
           margin-bottom: 2em;
           padding-bottom: 1em;
+          list-style: none;
         }
       `}</style>
     </div>

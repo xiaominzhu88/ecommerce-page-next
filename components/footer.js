@@ -17,9 +17,7 @@ function Footer(){
           </button>
         </form>
       </div>
-      <div className="back">
-        <p>© 2023 by XiaoMin.Zhu</p>
-      </div>
+        <p>© 2023 by Zhu</p>
       <style jsx>{`
       .background {
           background-image: url('/cool6.jpg');
@@ -31,6 +29,7 @@ function Footer(){
           padding-top: 0.6em;
         }
         .background h2 {
+          font-family:Didot, serif;
           text-align: center;
           color: white;
           font-size: 40px;
@@ -38,9 +37,11 @@ function Footer(){
         .background form {
           text-align: center;
         }
-        .back p {
+       p {
           text-align: center;
           font-weight: bold;
+          font-family:Didot, serif;
+
         }
 
         input {

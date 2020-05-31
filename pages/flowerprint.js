@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
 
 function Flowerprint() {
   const [price, setPrice] = useState('');
@@ -16,12 +17,18 @@ function Flowerprint() {
     setColor(e.target.value);
   }
   function showPrice() {
-    setPrice('€' + piece * 59 +',00');
+    setPrice('€' + piece * 59 + ',00');
   }
   function showSize(e) {
     setSize(e.target.value);
   }
 
+  // set cookies 
+  function goCart() {
+    const product = { name:'Flowerprint', size: size, piece: piece, price: price, color: color };
+    Cookies.set('ProductFlower', product);
+    window.location.reload();
+  }
   return (
     <div>
       <Head>
@@ -92,8 +99,8 @@ function Flowerprint() {
             <option>Beige</option>
           </select>
           <input
-            type='number'
-            min='1'
+            type="number"
+            min="1"
             placeholder="pieces"
             onChange={changePieces}
             onKeyUp={showPrice}
@@ -104,13 +111,14 @@ function Flowerprint() {
 
           <p>Size: {size} </p>
           <p>Color: {color}</p>
-          <p>Piece: {piece} </p>
+          <p>Qty: {piece} </p>
           <p>Total Price: {price} </p>
           <hr />
 
-          <Link href="/Payment">
+          <button onClick={goCart}>Add to Cart</button>
+          <Link href="/CartForPayment">
             <a>
-              <button>Checkout</button>
+              <button>To Cart</button>
             </a>
           </Link>
         </div>
@@ -136,8 +144,7 @@ function Flowerprint() {
             display: flex;
             justify-content: space-around;
             background-image: url('/flowerbgc.png');
-            align-items:center;
-
+            align-items: center;
           }
           select {
             border-radius: 5px;
@@ -156,8 +163,7 @@ function Flowerprint() {
             font-weight: bold;
             margin-left: 2em;
             width: 4em;
-            margin-left:1em;
-
+            margin-left: 1em;
           }
           button {
             margin-top: 2em;

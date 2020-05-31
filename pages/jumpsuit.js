@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
 
 function Jumpsuit() {
   const [price, setPrice] = useState('');
@@ -16,6 +17,16 @@ function Jumpsuit() {
   }
   function showSize(e) {
     setSize(e.target.value);
+  }
+  function goCart() {
+    const product = {
+      name: 'Jumpsuit',
+      size: size,
+      piece: piece,
+      price: price,
+    };
+    Cookies.set('ProductJumpsuit', product);
+    window.location.reload();
   }
 
   return (
@@ -75,13 +86,14 @@ function Jumpsuit() {
           <hr />
 
           <p>Size: {size} </p>
-          <p>Piece: {piece} </p>
+          <p>Qty: {piece} </p>
           <p>Total Price: {price} </p>
           <hr />
 
-          <Link href="/Payment">
+          <button onClick={goCart}>Add to Cart</button>
+          <Link href="/CartForPayment">
             <a>
-              <button>Checkout</button>
+              <button>To Cart</button>
             </a>
           </Link>
         </div>
@@ -97,8 +109,7 @@ function Jumpsuit() {
             justify-content: space-around;
             background-color: lightgray;
             background-image: url('/jumpsuitbgc.jpg');
-            align-items:center;
-
+            align-items: center;
           }
           select {
             border-radius: 5px;
@@ -117,8 +128,7 @@ function Jumpsuit() {
             font-weight: bold;
             margin-left: 2em;
             width: 4em;
-            margin-left:1em;
-
+            margin-left: 1em;
           }
           button {
             margin-top: 2em;

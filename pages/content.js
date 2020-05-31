@@ -15,6 +15,9 @@ function Content() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Nav />
+
+      {/* a list for these 4 items, map from db, removed for better visual effect
+      
       <div className="slogan">
         <h3>New Arrivals</h3>
         <ul>
@@ -24,13 +27,38 @@ function Content() {
                 <span aria-label="emoji" className="emoji" role="img">
                   👗
                 </span>
-                {list.name}
+                {list.className}
               </li>
             );
           })}
         </ul>
-      </div>
+        </div> */}
 
+      <ul>
+        {fashionProductsList.map((fashionList) => {
+          return (
+            <li className={fashionList.className} key={fashionList.id}>
+              <div className={fashionList.className}>
+                <Link href={fashionList.url}>
+                  <a>
+                    <img
+                      src={fashionList.src}
+                      alt={fashionList.className}
+                      width="150px"
+                      height="300px"
+                    />
+                  </a>
+                </Link>
+                <h3>{fashionList.h3}</h3>
+                <p>{fashionList.p}</p>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+
+      {/* Use above map dynamically from db
+      
       <div className="dress">
         <Link href="/Dress">
           <a>
@@ -85,36 +113,33 @@ function Content() {
           If you have no idea how to to make the combination with them, be
           patient, The best things happen Unexpectedly.
         </p>
-      </div>
+      </div> */}
 
       <Footer />
       <style jsx>{`
-        .content {
-        }
-        .slogan {
-          text-align: center;
-          font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-          background-color: ivory;
-          padding-bottom: 1em;
-          padding-top: 0.5em;
-        }
         ul {
           display: flex;
-          flex-direction: column;
+          flex-flow: row wrap;
+          justify-content: space-around;
+
           margin: 0 auto;
           list-style: none;
           padding: 10px;
-          background-color: #fff;
-          box-shadow: 0px 3px 5px steelblue;
-          width: 15%;
-          border-radius: 20%;
           font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-          text-align: center;
+          align-items: center;
+        }
+        li {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          background-color: ghostwhite;
+          box-shadow: 0px 3px 5px steelblue;
+          margin-left: 10px;
         }
         p {
           font-size: 15px;
-          color: blue;
-          text-decoration-line: underline overline;
+          color: darkcyan;
+          text-decoration-line: overline;
           text-align: center;
           padding: 5px;
         }
@@ -127,41 +152,33 @@ function Content() {
         .flowerprint,
         .ways,
         .jumpsuit {
-          box-shadow: 0px 3px 3px gray;
-          margin-bottom: 20px;
-          margin-left: 40px;
-          margin-top: 50px;
           width: 40%;
         }
 
         .dress img {
           width: auto;
-          box-shadow: 0px 3px 3px steelblue;
-          margin-top: -40px;
+          box-shadow: 3px 3px 4px green;
           margin-left: 70%;
+          margin-top: 10px;
         }
 
         .flowerprint img {
-          box-shadow: 1px 2px 2px 0px;
-          margin-top: -40px;
-          margin-left: 80%;
+          box-shadow: 3px 3px 4px hotpink;
+          margin-top: -10%;
+          margin-left: 50%;
           width: auto;
         }
 
         .jumpsuit img {
-          box-shadow: 0px 3px 3px hotpink;
-          margin-top: 20px;
-          margin-left: 10px;
-          margin-right: 10px;
-          position: relative;
-          top: 5px;
-          left: 200px;
+          box-shadow: 0px 3px 4px blue;
+          margin-top: 10px;
+          margin-left: -80%;
           width: auto;
         }
         .ways img {
-          box-shadow: 1px 2px 2px 0px;
-          margin-top: 20px;
-          margin-left: 80%;
+          box-shadow: 3px 3px 4px orange;
+          margin-top: -45px;
+          margin-left: -90%;
           width: auto;
         }
       `}</style>
