@@ -22,7 +22,7 @@ function Tags() {
   }
   function goCart() {
     const product = { name:'Tags',piece: piece, price: price, color: color };
-    Cookies.set('ProductFlower', product);
+    Cookies.set('ProductTags', product);
     window.location.reload();
   }
 

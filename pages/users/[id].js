@@ -11,7 +11,7 @@ const User = (props) => {
   if (!props.user) return <div>User not found!</div>;
 
   // if (typeof window !== 'undefined') {
-  //   //visitedUser is an Array, turn it into onject for localStorage.getItem
+  // visitedUser is an Array, turn it into onject for localStorage.getItem
   //   const visitedUser = JSON.parse(window.localStorage.usersVisited);
   //
   //   window.localStorage.usersVisited = JSON.stringify([

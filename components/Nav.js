@@ -1,23 +1,15 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import Cookies from 'js-cookie';
-
 import { getFashionProducts } from '../dbFashion.js';
 import { getPetProducts } from '../dbFashion';
+//import Cookies from 'js-cookie';
+import { getCookies } from '../cookies';
 
+const objectCart = getCookies();
+ 
 const fashionProductsList = getFashionProducts();
 const petProductsList = getPetProducts();
-
-const cartSum = [
-  Cookies.get('ProductDress'),
-  Cookies.get('ProductJumpsuit'),
-  Cookies.get('ProductFlower'),
-  Cookies.get('ProductHarness'),
-  Cookies.get('ProductAccessoires'),
-  Cookies.get('ProductTags'),
-  Cookies.get('ProductTracker'),
-];
 
 function Nav() {
   const linkList = [
@@ -42,7 +34,6 @@ function Nav() {
           <div className="info">
             Fashion-Store: {fashionProductsList.length} <br /> Pet-Store:{' '}
             {petProductsList.length}
-            <br /> In Cart: {cartSum.length}
           </div>
         </div>
 
@@ -54,6 +45,7 @@ function Nav() {
               </Link>
             );
           })}
+          
           <Link href="/cartForPayment">
             <a>
               <span aria-label="emoji" className="emoji" role="img">
@@ -70,7 +62,7 @@ function Nav() {
                   marginLeft: '0.6em',
                 }}
               >
-                {cartSum.length}
+                {objectCart.length}
               </span>
             </a>
           </Link>

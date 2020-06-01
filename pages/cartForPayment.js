@@ -2,21 +2,18 @@ import React from 'react';
 import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Footer from '../components/Footer.js';
-import Cookies from 'js-cookie';
 import Link from 'next/link';
+import { getCookies } from '../cookies';
+//import {getPrice} from '../cookies';
 
-const cartSum = [
-  Cookies.get('ProductDress'),
-  Cookies.get('ProductJumpsuit'),
-  Cookies.get('ProductFlower'),
-  Cookies.get('ProductHarness'),
-  Cookies.get('ProductAccessoires'),
-  Cookies.get('ProductTags'),
-  Cookies.get('ProductTracker'),
-];
+const objectCart = getCookies();
+//const priceSum = getPrice();
 
-const objectCart = { ...cartSum };
-console.log(objectCart);
+console.log(Object.entries(objectCart));
+// => [{0: name:'dress' piece:'1'...},{1: name:'Jumpsuit' piece:'1'...}]
+//console.log(objectCart[0]);
+// => {name:'dress' piece:'1', size:'IT 34'...}
+// WHY can not objectCart[0].price
 
 function CartForPayment() {
   // Localstorage
@@ -38,16 +35,25 @@ function CartForPayment() {
       <Nav />
       <hr />
 
-      <ul>
-        <p>Items in Cart: {cartSum.length} </p>
-        <p className="cart">
-          Cart:
-          <span aria-label="emoji" className="emoji" role="img">
-            🛒
-          </span>
-          <li key="cart">{cartSum}</li>
-        </p>
-      </ul>
+      <p>Items in Cart: {objectCart.length} </p>
+      <hr />
+
+      <p className="cart">
+        Cart:
+        <span aria-label="emoji" className="emoji" role="img">
+          🛒
+        </span>
+      </p>
+
+      <p>{objectCart}</p>
+
+      {/*<ul>
+  {objectCart.map((cart,i) => {
+    return <li key={`${cart}_${i}`}>cart</li>
+    
+    })}
+  </ul>*/}
+
       <hr />
 
       <p>
@@ -55,7 +61,7 @@ function CartForPayment() {
         <span aria-label="emoji" className="emoji" role="img">
           🎈 €{' '}
         </span>{' '}
-        {cartSum}
+        {}
       </p>
       <hr />
 
@@ -89,10 +95,6 @@ function CartForPayment() {
 
       <Footer />
       <style jsx>{`
-        ul {
-          list-style: none;
-        }
-
         .payment-shipment {
           width: 50%;
           margin: auto;
