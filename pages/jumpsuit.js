@@ -25,7 +25,7 @@ function Jumpsuit() {
       piece: piece,
       price: price,
     };
-    Cookies.set('ProductJumpsuit', product);
+    Cookies.set('cart', product);
     window.location.reload();
   }
 

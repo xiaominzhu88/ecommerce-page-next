@@ -44,10 +44,52 @@ const petProducts = [
   { id: '3', url: '/Tracker', src: '/dogge3.jpg', className: 'd3' },
 ];
 
-const users = [
-  { id: '1', name: 'Mini', role: 'admin' },
-  { id: '2', name: 'Lola', role: 'user' },
-  { id: '3', name: 'Christoph', role: 'admin' },
+const products = [
+  {
+    id: '1',
+    name: 'dress',
+    h2: 'Guide to the Best Memorial Day Weekend',
+    p:
+      'Material & care instructions Outer fabric material:95% polyamide, 5% elastane,Lining:100% silk Care construction: Do not tumble dry,machine wash at 30 ° C, gentle cycle',
+    src: '/yellow-dress.jpg',
+    price: '€90,00',
+    className1: 'dress-page',
+    className2: 'dress-image',
+  },
+
+  {
+    id: '2',
+    name: 'flower-print',
+    h2: 'Alway bring your own sunshine',
+    p:
+      ' Material & care instructions Outer fabric material:95% polyamide, 5% elastane Lining: 100% silk Care construction:Do not tumble dry, machine wash at 30 ° C, gentle cycle',
+    src: '/flowerprint.jpg',
+    price: '€59,00',
+    className1: 'flower-page',
+    className2: 'skirt-image',
+  },
+
+  {
+    id: '3',
+    name: 'jumpsuit',
+    h2: 'Remain a classic',
+    p:
+      'in a world full of trends Material & care instructions  Outer fabric material:90% silk, 10% viscose Lining:100% silk Care construction: Do not tumble dry,machine wash at 30 ° C, gentle cycle',
+    src: '/jumpsuit.jpg',
+    price: '€79,00',
+    className1: 'jumpsuit-page',
+    className2: 'jumpsuit-image',
+  },
+  {
+    id: '4',
+    name: 'accessoires',
+    h2: 'A way to say who you are without having to speak',
+    p: 'Material Stainless Steel, Silver Plated,  Gold Plated',
+    src: '/access.jpg',
+    price: '€59,00 | each piece',
+    className1: 'access-page',
+    className2: 'access-image',
+  },
 ];
 
 export function getFashionProducts() {
@@ -56,9 +98,10 @@ export function getFashionProducts() {
 export function getPetProducts() {
   return petProducts;
 }
-export function getUsers() {
-  return users;
+
+export function getProducts() {
+  return products;
 }
-export function getUserById(id) {
-  return users.find((user) => user.id === id);
+export function getProductsById(id) {
+  return products.map((product) => product.id === id);
 }

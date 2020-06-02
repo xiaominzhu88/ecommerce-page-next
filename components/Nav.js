@@ -4,10 +4,7 @@ import Link from 'next/link';
 import { getFashionProducts } from '../dbFashion.js';
 import { getPetProducts } from '../dbFashion';
 //import Cookies from 'js-cookie';
-import { getCookies } from '../cookies';
 
-const objectCart = getCookies();
- 
 const fashionProductsList = getFashionProducts();
 const petProductsList = getPetProducts();
 
@@ -45,13 +42,15 @@ function Nav() {
               </Link>
             );
           })}
-          
+
           <Link href="/cartForPayment">
             <a>
               <span aria-label="emoji" className="emoji" role="img">
                 🛒
               </span>{' '}
-              <span style={{ color: 'red',marginLeft:'0.5em' }}>Shopping CART: </span>{' '}
+              <span style={{ color: 'red', marginLeft: '0.5em' }}>
+                Shopping CART:{' '}
+              </span>{' '}
               <span
                 style={{
                   fontSize: '1.8em',
@@ -62,7 +61,7 @@ function Nav() {
                   marginLeft: '0.6em',
                 }}
               >
-                {objectCart.length}
+                {}
               </span>
             </a>
           </Link>

@@ -25,7 +25,7 @@ function Tracker() {
       price: price,
       color: color,
     };
-    Cookies.set('ProductTracker', product);
+    Cookies.set('cart', product);
     window.location.reload();
   }
   return (

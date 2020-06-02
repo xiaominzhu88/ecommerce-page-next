@@ -33,7 +33,12 @@ function Dress() {
 
   function goCart() {
     const product = { name: 'dress', size: size, piece: piece, price: price };
-    Cookies.set('ProductDress', product);
+
+    const newCart = Cookies.getJSON('cart') || [];
+
+    newCart.push(product);
+
+    Cookies.set('cart', newCart);
     window.location.reload();
   }
 
@@ -74,6 +79,7 @@ function Dress() {
 
           <p>&#8364;90,00</p>
           <hr />
+
           <select onChange={showSize}>
             <option>Select size</option>
             <option>IT 34</option>

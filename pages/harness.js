@@ -32,7 +32,7 @@ function Harness() {
       piece: piece,
       color: color,
     };
-    cookies.set('ProductHarness', product);
+    cookies.set('cart', product);
     window.location.reload();
   }
 

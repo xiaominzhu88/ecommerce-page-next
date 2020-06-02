@@ -3,19 +3,15 @@ import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Footer from '../components/Footer.js';
 import Link from 'next/link';
-import { getCookies } from '../cookies';
+import nextCookies from 'next-cookies';
+
+//import { getCookies } from '../cookies';
 //import {getPrice} from '../cookies';
 
-const objectCart = getCookies();
+//const objectCart = getCookies();
 //const priceSum = getPrice();
 
-console.log(Object.entries(objectCart));
-// => [{0: name:'dress' piece:'1'...},{1: name:'Jumpsuit' piece:'1'...}]
-//console.log(objectCart[0]);
-// => {name:'dress' piece:'1', size:'IT 34'...}
-// WHY can not objectCart[0].price
-
-function CartForPayment() {
+function CartForPayment(props) {
   // Localstorage
   //  function sumCart() {
   //    if (typeof Storage !== 'undefined') {
@@ -35,7 +31,7 @@ function CartForPayment() {
       <Nav />
       <hr />
 
-      <p>Items in Cart: {objectCart.length} </p>
+      <p>Items in Cart: {props.cart.length} </p>
       <hr />
 
       <p className="cart">
@@ -45,14 +41,17 @@ function CartForPayment() {
         </span>
       </p>
 
-      <p>{objectCart}</p>
+      <ul>
+        {console.log(props.cart)}
 
-      {/*<ul>
-  {objectCart.map((cart,i) => {
-    return <li key={`${cart}_${i}`}>cart</li>
-    
-    })}
-  </ul>*/}
+        {props.cart.map((cart, i) => {
+          return (
+            <li key={`${cart}_${i}`}>
+              {cart.name} {cart.price}
+            </li>
+          );
+        })}
+      </ul>
 
       <hr />
 
@@ -139,3 +138,15 @@ function CartForPayment() {
 }
 
 export default CartForPayment;
+
+export function getServerSideProps(context) {
+  console.log(nextCookies(context));
+
+  const cart = nextCookies(context).cart;
+
+  return {
+    props: {
+      ...(cart ? { cart: cart } : null),
+    },
+  };
+}

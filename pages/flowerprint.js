@@ -23,12 +23,24 @@ function Flowerprint() {
     setSize(e.target.value);
   }
 
-  // set cookies 
+  // set cookies
   function goCart() {
-    const product = { name:'Flowerprint', size: size, piece: piece, price: price, color: color };
-    Cookies.set('ProductFlower', product);
+    const product = {
+      name: 'Flowerprint',
+      size: size,
+      piece: piece,
+      price: price,
+      color: color,
+    };
+
+    const newCart = Cookies.getJSON('cart') || [];
+
+    newCart.push(product);
+
+    Cookies.set('cart', newCart);
     window.location.reload();
   }
+
   return (
     <div>
       <Head>

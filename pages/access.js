@@ -31,7 +31,7 @@ function Access() {
       price: price,
       color: color,
     };
-    Cookies.set('ProductAccessoires', product);
+    Cookies.set('cart', product);
     window.location.reload();
   }
 
