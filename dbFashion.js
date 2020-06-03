@@ -5,7 +5,7 @@ const fasionProducts = [
     id: '1',
     className: 'dress',
     src: '/4dress.jpg',
-    url: '/Dress',
+    url: '/products/1',
     h3: 'Your closet needs at least one yellow dress',
     p: '“Be original, show off your style, and tell your story.”',
   },
@@ -13,7 +13,7 @@ const fasionProducts = [
     id: '2',
     className: 'flowerprint',
     src: '/4huaqun.jpg',
-    url: '/Flowerprint',
+    url: '/products/2',
     h3: 'A Sunday well spent brings a Week of Content',
     p: "Dress like you're Going to meet your Worst Enemy Today",
   },
@@ -21,7 +21,7 @@ const fasionProducts = [
     id: '3',
     className: 'jumpsuit',
     src: '/4jumpsuit.jpg',
-    url: '/Jumpsuit',
+    url: '/products/3',
     h3: 'Jumpsuit',
     p:
       'Jumpsuit is great for everything from traveling or casual weekend brunch.',
@@ -31,7 +31,7 @@ const fasionProducts = [
     id: '4',
     className: 'ways',
     src: '/access.jpg',
-    url: '/Access',
+    url: '/products/4',
     h3: 'Fashion as unique as you are, be your own label...',
     p:
       ' If you have no idea how to to make the combination with them, be patient, The best things happen Unexpectedly.',
@@ -39,9 +39,9 @@ const fasionProducts = [
 ];
 
 const petProducts = [
-  { id: '1', url: '/Harness', src: '/dogge1.jpeg', className: 'd1' },
-  { id: '2', url: '/Tags', src: '/dogge2.jpg', className: 'd2' },
-  { id: '3', url: '/Tracker', src: '/dogge3.jpg', className: 'd3' },
+  { id: '7', url: '/products/7', src: '/dogge1.jpeg', className: 'd1' },
+  { id: '6', url: '/products/6', src: '/dogge2.jpg', className: 'd2' },
+  { id: '5', url: '/products/5', src: '/dogge3.jpg', className: 'd3' },
 ];
 
 const products = [
@@ -90,6 +90,40 @@ const products = [
     className1: 'access-page',
     className2: 'access-image',
   },
+  {
+    id: '5',
+    name: 'Tracker',
+    h2: "Monitor your dog's Daily Activity",
+    p:
+      'Be your own dog whisperer. Get feedback on how your dog is responding to a new treatment or a new nutritional plan, Get notifications from your FREE downloadable app sent to your smartphone when your battery needs to be replaced.Attaches to any dog collars up to 1/4 wide and designed to go anywhere with your pet, such as walks, the dog park, rolling in the mud or a dip in the water.',
+    src: '/dogge3.jpg',
+    price: '€15,00 | each piece',
+    className1: 'tracker-page',
+    className2: 'tracker-image',
+  },
+  {
+    id: '6',
+    name: 'Tags',
+
+    h2: 'Quick-Tag Pet ID Tags',
+    p:
+      'Quick-Tag can be engraved with personal information to ensure a safe return. Features a sturdy D-ring that supports all standard leashes; Ensures your pet can be properly identified for a safe return; Handsome chrome dog name tags in a charming bone shape; Helps prevent your pet from becoming lost',
+    src: '/doggetag2.jpg',
+    price: '€15,00',
+    className1: 'tags-page',
+    className2: 'tags-image',
+  },
+  {
+    id: '7',
+    name: 'Harness',
+    h2: 'Reversible Dog Harness',
+    p:
+      'Features a sturdy D-ring that supports all standard leashes Machine-washable, though hand-washing is preferred; Designed to fit any dog matching our size guide (see images) safely and securely; Fits comfortably, sliding easily over head, with padding and an adjustable strap to make sure your dog looks good and feels good; Made from high-quality neoprene and breathable mesh, with secure, durable buckles',
+    src: '/harness2.jpg',
+    price: '€39,00',
+    className1: 'harness-page',
+    className2: 'harness-image',
+  },
 ];
 
 export function getFashionProducts() {
@@ -103,5 +137,5 @@ export function getProducts() {
   return products;
 }
 export function getProductsById(id) {
-  return products.map((product) => product.id === id);
+  return products.find((product) => product.id === id);
 }

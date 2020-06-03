@@ -31,7 +31,7 @@ function CartForPayment(props) {
       <Nav />
       <hr />
 
-      <p>Items in Cart: {props.cart.length} </p>
+      <p>Items in Cart: {props.cart ? props.cart.length : 'No Cart'} </p>
       <hr />
 
       <p className="cart">

@@ -18,16 +18,7 @@ function Tracker() {
   function showSize(e) {
     setColor(e.target.value);
   }
-  function goCart() {
-    const product = {
-      name: 'Tracker',
-      piece: piece,
-      price: price,
-      color: color,
-    };
-    Cookies.set('cart', product);
-    window.location.reload();
-  }
+
   return (
     <div>
       <Head>
@@ -84,7 +75,7 @@ function Tracker() {
           <p>Qty: {piece} </p>
           <p>Total Price: {price} </p>
           <hr />
-          <button onClick={goCart}>Add to Cart</button>
+          <button>Add to Cart</button>
 
           <Link href="/CartForPayment">
             <a>

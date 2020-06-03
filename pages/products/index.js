@@ -4,6 +4,7 @@ import Nav from '../../components/Nav';
 import Footer from '../../components/Footer.js';
 import Link from 'next/link';
 import { getProducts } from '../../dbFashion';
+import Cookies from 'js-cookie';
 
 // page with all user list, which renderd from Nav=>users
 //localhost:3000/users  => is this page adress

@@ -49,20 +49,8 @@ function Nav() {
                 🛒
               </span>{' '}
               <span style={{ color: 'red', marginLeft: '0.5em' }}>
-                Shopping CART:{' '}
+                To Shopping CART:{' '}
               </span>{' '}
-              <span
-                style={{
-                  fontSize: '1.8em',
-                  borderRadius: '5px',
-                  backgroundColor: '#21a10a',
-                  color: '#fff',
-                  padding: '0.3em',
-                  marginLeft: '0.6em',
-                }}
-              >
-                {}
-              </span>
             </a>
           </Link>
         </div>

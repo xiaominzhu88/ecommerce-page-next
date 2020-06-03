@@ -31,16 +31,16 @@ function Dress() {
 
   // set cookies for cart product
 
-  function goCart() {
-    const product = { name: 'dress', size: size, piece: piece, price: price };
-
-    const newCart = Cookies.getJSON('cart') || [];
-
-    newCart.push(product);
-
-    Cookies.set('cart', newCart);
-    window.location.reload();
-  }
+  //function goCart() {
+  //  const product = { name: 'dress', size: //size, piece: piece, price: price };
+  //
+  //  const newCart = Cookies.getJSON('cart') || //[];
+  //
+  //  newCart.push(product);
+  //
+  //  Cookies.set('cart', newCart);
+  //  window.location.reload();
+  //}
 
   return (
     <div>
@@ -103,7 +103,7 @@ function Dress() {
           <p>Total Price: {price} </p>
           <hr />
 
-          <button onClick={goCart}>Add to Cart</button>
+          <button>Add to Cart</button>
 
           <Link href="/CartForPayment">
             <a>
