@@ -27,15 +27,27 @@ export default function Home() {
         * {
           box-sizing: border-box;
         }
-        a{
-          text-decoration:none;
-          color:rgb(33, 24, 155);
+        a {
+          text-decoration: none;
+          color: rgb(33, 24, 155);
         }
-        a:hover{
-          text-decoration:underline;
-          color:hotpink;
-          font-size:1.1em;
-          font-weight:700;
+        a:hover {
+          text-decoration: underline;
+          color: hotpink;
+          font-size: 1.1em;
+          font-weight: 700;
+        }
+        .info {
+          text-align: center;
+          font-family: fantasy;
+          font-weight: 600;
+          box-shadow: 0px 3px 5px orange;
+          width: 18%;
+          padding: 5px;
+          border-radius: 30%;
+          color: orange;
+          margin-bottom: 2em;
+          margin: auto;
         }
       `}</style>
     </div>

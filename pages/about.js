@@ -70,7 +70,6 @@ function About() {
           letter-spacing: 0.2em;
           line-height: 2em;
         }
-        
       `}</style>
     </>
   );

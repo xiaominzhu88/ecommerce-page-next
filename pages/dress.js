@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
-import Cookies from 'js-cookie';
 
 function Dress() {
   const [price, setPrice] = useState('');

@@ -16,6 +16,7 @@ function Pet() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Nav />
+
       <div className="drinkingdog">
         <img
           src="/4loladrink.jpg"

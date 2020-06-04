@@ -1,12 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { getFashionProducts } from '../dbFashion.js';
-import { getPetProducts } from '../dbFashion';
-//import Cookies from 'js-cookie';
-
-const fashionProductsList = getFashionProducts();
-const petProductsList = getPetProducts();
+import Cookies from 'js-cookie';
 
 function Nav() {
   const linkList = [
@@ -14,9 +9,32 @@ function Nav() {
     { name: 'ABOUT', url: '/about' },
     { name: 'FASHION-STORE', url: '/content' },
     { name: 'PET-STORE', url: '/pet' },
-    { name: 'USERS', url: '/users' },
     { name: 'CONTACT', url: '/contact' },
   ];
+
+  const cartItems = Cookies.getJSON('cart');
+
+  const cartCount = cartItems
+    ? cartItems.reduce((acc, cur) => {
+        return acc + cur.piece;
+      }, 0)
+    : '';
+
+  const cartSum = cartCount
+    ? Array.from(cartCount)
+        .map((x) => +x)
+        .reduce((acc, cur) => {
+          return acc + cur;
+        })
+    : 0;
+
+  //const cartSum = [...cartCount];
+  //console.log(cartSum);
+  //
+  //cartSum.reduce((acc, cur) => {
+  //  return acc + cur;
+  //});
+
   return (
     <>
       <Head>
@@ -28,12 +46,9 @@ function Nav() {
         <div className="nav-bar">
           <h1>ZHU</h1>
           <p>FASHION & PET STORE</p>
-          <div className="info">
-            Fashion-Store: {fashionProductsList.length} <br /> Pet-Store:{' '}
-            {petProductsList.length}
-          </div>
         </div>
 
+        {/* Navbar links */}
         <div className="header">
           {linkList.map((link) => {
             return (
@@ -43,16 +58,32 @@ function Nav() {
             );
           })}
 
+          {/* Cart-Page link */}
           <Link href="/cartForPayment">
             <a>
               <span aria-label="emoji" className="emoji" role="img">
                 🛒
               </span>{' '}
               <span style={{ color: 'red', marginLeft: '0.5em' }}>
-                To Shopping CART:{' '}
+                My Cart:{' '}
+                <span
+                  style={{
+                    fontSize: '2em',
+                    marginLeft: '0.3em',
+                    color: 'blue',
+                    fontWeight: 'bold',
+                    backgroundColor: 'beige',
+                    padding: '0.5em',
+                    borderRadius: '50%',
+                  }}
+                >
+                  {cartSum}
+                </span>{' '}
               </span>{' '}
             </a>
           </Link>
+
+          {/* Use props to get cart.length(cookies) from cartForPayment, because getServerSideProps can be only import in Pages */}
         </div>
       </nav>
 
@@ -103,17 +134,6 @@ function Nav() {
           height: 100%;
           background-attachment: fixed;
           background-size: cover;
-        }
-        .info {
-          text-align: center;
-          font-family: fantasy;
-          font-weight: 600;
-          box-shadow: 0px 3px 5px orange;
-          width: 18%;
-          padding: 5px;
-          border-radius: 30%;
-          color: orange;
-          margin-bottom: 2em;
         }
 
         .header {
