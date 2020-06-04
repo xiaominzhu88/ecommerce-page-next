@@ -13,6 +13,18 @@ function Nav() {
   ];
 
   const cartItems = Cookies.getJSON('cart');
+  //console.log(cartItems);
+
+  //const countArray = cartItems
+  //  ? JSON.parse(cartItems).map((el) => el.piece)
+  //  : [];
+  //
+  //const itemsCountSum = countArray
+  //  .map((x) => +x)
+  //  .reduce((acc, cur) => {
+  //    return acc + cur;
+  //  });
+  //console.log(itemsCountSum);
 
   const cartCount = cartItems
     ? cartItems.reduce((acc, cur) => {
@@ -27,13 +39,6 @@ function Nav() {
           return acc + cur;
         })
     : 0;
-
-  //const cartSum = [...cartCount];
-  //console.log(cartSum);
-  //
-  //cartSum.reduce((acc, cur) => {
-  //  return acc + cur;
-  //});
 
   return (
     <>
@@ -82,8 +87,6 @@ function Nav() {
               </span>{' '}
             </a>
           </Link>
-
-          {/* Use props to get cart.length(cookies) from cartForPayment, because getServerSideProps can be only import in Pages */}
         </div>
       </nav>
 

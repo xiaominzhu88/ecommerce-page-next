@@ -6,6 +6,7 @@ import Link from 'next/link';
 import nextCookies from 'next-cookies';
 
 function CartForPayment({ cart }) {
+  const [cartArray, setCartArray] = useState(cart);
   // Localstorage
   //  function sumCart() {
   //    if (typeof Storage !== 'undefined') {
@@ -20,20 +21,32 @@ function CartForPayment({ cart }) {
   // });
   //console.log(cart);
 
-  function removeCookie(indexToRemove) {
-    console.log(itemPrice);
-  }
+  //get Price from cookies in an Array, IF cart is UNDEFINED, then return [], else map over to get each price
+  const itemPrice =
+    cart === undefined
+      ? []
+      : cart.map((cartEach, i) => {
+          return cartEach.price;
+        });
 
-  //get Price from cookies in an Array
-  const itemPrice = cart.map((cartEach, i) => {
-    return cartEach.price;
-  });
   // Map each price, convert them into number, reduce to get total sum price
-  const total = itemPrice
-    .map((x) => Number(x.replace(/[^0-9.-]+/g, '')))
-    .reduce((a, b) => {
-      return a + b;
+  //If price is UNDEFINED, then return 0, otherwise COUNT from 0!!!!
+  const total =
+    itemPrice === undefined
+      ? 0
+      : itemPrice
+          .map((x) => Number(x.replace(/[^0-9.-]+/g, '')))
+          .reduce((a, b) => {
+            return a + b;
+          }, 0);
+
+  // remove cookie
+  const removeCookie = (indexToRemove) => {
+    const indexArray = cartArray.filter((el, i) => {
+      return i !== indexToRemove;
     });
+    setCartArray(indexArray);
+  };
 
   return (
     <div className="paymentPage">
@@ -43,7 +56,19 @@ function CartForPayment({ cart }) {
       </Head>
       <Nav />
 
-      <p className="label">Items in Cart: {cart ? cart.length : 'No Cart'} </p>
+      <p className="label">
+        Items in Cart:{' '}
+        <span
+          style={{
+            fontSize: '1em',
+            marginLeft: '0.3em',
+            color: 'red',
+            fontWeight: 'bold',
+          }}
+        >
+          {cart ? cart.length : 'No Cart'}
+        </span>{' '}
+      </p>
       <hr />
 
       <p className="cart label">
@@ -55,14 +80,20 @@ function CartForPayment({ cart }) {
 
       <ul>
         {cart.map((cartEach, i) => {
-          //console.log(cartEach);
-
           return (
             <div className="itemCart">
               <img src={cartEach.src} alt="all cart images"></img>
-              <li key={`${cartEach}`}> {cartEach.name}</li>
-              <li key={`${cartEach}_${i}`}>Qty: {cartEach.piece} </li>
-              <li key={`${i}`}> Price: {cartEach.price} </li>
+              <li key={`${cartEach.name}_i`}> {cartEach.name}</li>
+              <li key={`${cartEach.piece}_i`}>
+                Qty:
+                <input
+                  style={{ width: '3em' }}
+                  value={cartEach.piece}
+                  onChange={(e) => e.target.value}
+                  type="number"
+                ></input>{' '}
+              </li>
+              <li key={`${cartEach.price}_i`}> Price: {cartEach.price},00 </li>
               <button onClick={removeCookie}>remove</button>
             </div>
           );
@@ -76,7 +107,16 @@ function CartForPayment({ cart }) {
         <span aria-label="emoji" className="emoji" role="img">
           🎈 €{' '}
         </span>{' '}
-        {total}
+        <span
+          style={{
+            fontSize: '1em',
+            marginLeft: '0.3em',
+            color: 'blue',
+            fontWeight: 'bold',
+          }}
+        >
+          {total},00
+        </span>{' '}
       </p>
       <hr />
 
@@ -175,7 +215,7 @@ function CartForPayment({ cart }) {
 export default CartForPayment;
 
 export function getServerSideProps(context) {
-  console.log(nextCookies(context));
+  //console.log(nextCookies(context));
 
   const { cart } = nextCookies(context);
 
