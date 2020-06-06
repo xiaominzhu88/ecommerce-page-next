@@ -4,6 +4,7 @@ import Nav from '../components/Nav.js';
 import Footer from '../components/Footer.js';
 import Link from 'next/link';
 import nextCookies from 'next-cookies';
+import Cookies from 'js-cookie';
 
 function CartForPayment({ cart }) {
   const [cartArray, setCartArray] = useState(cart);
@@ -46,6 +47,7 @@ function CartForPayment({ cart }) {
       return i !== indexToRemove;
     });
     setCartArray(indexArray);
+    Cookies.set('cart', indexArray);
   };
 
   return (
@@ -79,7 +81,7 @@ function CartForPayment({ cart }) {
       </p>
 
       <ul>
-        {cart.map((cartEach, i) => {
+        {cartArray.map((cartEach, i) => {
           return (
             <div className="itemCart">
               <img src={cartEach.src} alt="all cart images"></img>
@@ -94,7 +96,7 @@ function CartForPayment({ cart }) {
                 ></input>{' '}
               </li>
               <li key={`${cartEach.price}_i`}> Price: {cartEach.price},00 </li>
-              <button onClick={removeCookie}>remove</button>
+              <button onClick={() => removeCookie(i)}>remove</button>
             </div>
           );
         })}
