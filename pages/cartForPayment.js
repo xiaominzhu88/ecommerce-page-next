@@ -26,7 +26,7 @@ function CartForPayment({ cart }) {
   const itemPrice =
     cart === undefined
       ? []
-      : cart.map((cartEach, i) => {
+      : cartArray.map((cartEach, i) => {
           return cartEach.price;
         });
 
