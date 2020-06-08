@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 
-function Footer(){
+function Footer() {
   return (
     <>
       <Head>
@@ -17,7 +17,7 @@ function Footer(){
           </button>
         </form>
       </div>
-        <p>© 2023 by Zhu</p>
+      <p>© 2023 by Zhu</p>
       <style jsx>{`
       .background {
           background-image: url('/cool6.jpg');
@@ -27,6 +27,9 @@ function Footer(){
           background-size: 100% 100%;
           padding-bottom: 1em;
           padding-top: 0.6em;
+        }
+        .dogge .background {
+          background-image: url('/bgcCool.jpg');
         }
         .background h2 {
           font-family:Didot, serif;

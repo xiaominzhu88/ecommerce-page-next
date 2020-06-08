@@ -3,12 +3,10 @@ import Head from 'next/head';
 import Footer from '../components/Footer.js';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
-import { getPetProducts } from '../dbFashion.js';
 
 // Page that links to dogge page
-const petProducts = getPetProducts();
 
-function Pet() {
+function Pet({ petProducts }) {
   return (
     <>
       <Head>
@@ -33,7 +31,6 @@ function Pet() {
           should keep their comfort in mind when shopping or drinking.
         </p>
       </div>
-      <hr />
       <div className="dog">
         <ul>
           {petProducts.map((pet) => {
@@ -58,14 +55,15 @@ function Pet() {
           })}
         </ul>
         <h3 className="drinkingdog">To have the pat with you</h3>
-        <hr />
       </div>
       <Footer />
       <style jsx>{`
         .dog h3 {
           font-style: italic;
           text-align: center;
-          padding: 5px;
+          padding: 15px;
+          margin-left: 0;
+          margin-top: 0;
         }
         .dog p {
           font-size: 15px;
@@ -76,17 +74,14 @@ function Pet() {
         }
         .dog {
           text-align: right;
-          border: 1px solid gray;
-          box-shadow: 0px 2px 3px 1px;
-          margin-bottom: 20px;
-          margin-left: 40px;
-          margin-top: 50px;
+
+          border-radius: 20px;
+          box-shadow: 0 0 25px rgba(0, 0, 0, 0.33);
+          margin: 100px 50px;
         }
         .dog img {
           box-shadow: 0px 3px 4px blue;
-          margin-top: 20px;
-          margin-left: 10px;
-          margin-right: 20px;
+          margin: 0;
           width: auto;
         }
         .drinkingdog {
@@ -103,6 +98,7 @@ function Pet() {
           font-family: monospace;
           font-size: 2em;
           text-shadow: 0px 2px 3px blue;
+          border-radius: 0 0 20px 20px;
         }
         .drinkingdog p {
           font-size: 15px;
@@ -131,6 +127,9 @@ function Pet() {
           align-items: center;
           list-style: none;
           justify-content: space-around;
+          padding-left: 0;
+          padding: 50px 0;
+          margin: 0;
         }
       `}</style>
     </>
@@ -138,3 +137,15 @@ function Pet() {
 }
 
 export default Pet;
+
+export async function getServerSideProps(context) {
+  const { getPetProducts } = await import('../dbFashion.js');
+
+  const petProducts = getPetProducts(context.params);
+  if (petProducts === undefined) {
+    return { props: {} };
+  }
+  return {
+    props: { petProducts },
+  };
+}

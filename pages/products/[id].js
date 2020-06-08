@@ -2,14 +2,10 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Nav from '../../components/Nav';
 import Footer from '../../components/Footer';
-import { getProductsById } from '../../dbFashion';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 
-// [id] act as part of the path, catch anything which is NOT
-// match in onther files
-
-const Product = ({ item }) => {
+const Product = ({ items }) => {
   const [price, setPrice] = useState();
   const [piece, setPiece] = useState('');
 
@@ -17,18 +13,18 @@ const Product = ({ item }) => {
     setPiece(e.target.value);
   }
   function showPrice(e) {
-    setPrice('€' + piece * item.price);
+    setPrice('€' + piece * items.price);
   }
 
-  if (!item) return <div>Item not found!</div>;
+  if (!items) return <div>Item not found!</div>;
 
   function goCart() {
     const product = {
       piece: piece,
       price: price,
-      name: item.name,
-      src: item.src,
-      id: item.id,
+      name: items.name,
+      src: items.src,
+      id: items.id,
     };
 
     const newCart = Cookies.getJSON('cart') || [];
@@ -42,20 +38,20 @@ const Product = ({ item }) => {
   return (
     <div>
       <Head>
-        <title>{item.name}</title>
+        <title>{items.name}</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Nav />
       <hr />
 
       <main>
-        <h1>{item.h2}</h1>
-        <h2>{item.name}</h2>
-        <img src={item.src} alt="items" />
-        <h3>{item.h3}</h3>
-        <p>{item.p}</p>
+        <h1>{items.h2}</h1>
+        <h2>{items.name}</h2>
+        <img src={items.src} alt="items" />
+        <h3>{items.h3}</h3>
+        <p>{items.p}</p>
 
-        <p>Euro: {item.price}</p>
+        <p>Euro: {items.price}</p>
         <hr />
         {/*   <select onChange={}>
           <option>Select Size</option>
@@ -80,7 +76,7 @@ const Product = ({ item }) => {
         <p>Total Price: {price} </p>
         <hr />
 
-        <button onClick={goCart}>Add item</button>
+        <button onClick={goCart}>Add items</button>
         <Link href="/CartForPayment">
           <a>
             <button className="toCartButton">To CartPage</button>
@@ -92,6 +88,7 @@ const Product = ({ item }) => {
 
       <Footer />
       <style jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Bitter:ital@1&display=swap');
         main {
           margin: 0 auto;
           display: flex;
@@ -118,18 +115,18 @@ const Product = ({ item }) => {
         p {
           font-size: 15px;
           color: darkcyan;
-          text-decoration-line: overline underline;
-          text-align: center;
+          text-align: left;
           font-weight: 700;
           margin-top: 1em;
-          line-height: 1.5em;
+          line-height: 1.6em;
           font-size: 0.8em;
+          font-family: 'Bitter', serif;
+          max-width: 450px;
         }
 
         img {
           width: 50%;
           margin: 0 auto;
-          box-shadow: 0px 5px 5px blue;
         }
 
         input {
@@ -177,17 +174,20 @@ export default Product;
 // like 'password'...database connection information...
 //
 
-export function getServerSideProps(context) {
-  // get info from database, database was imported on the top with {getProductsById},  pass in the user as props
+export async function getServerSideProps(context) {
+  //import { getProductsById } from '../../dbFashion';
 
-  //console.log(getProductsById(context.params.id));
+  const { getProductsById } = await import('../../dbFashion.js');
+  const items = await getProductsById(context.params.id);
 
-  const item = getProductsById(context.params.id);
+  console.log('item id', context.params.id);
 
-  if (item === undefined) {
+  //console.log(context);
+
+  if (items === undefined) {
     return { props: {} };
   }
   return {
-    props: { item },
+    props: { items: items[0] },
   };
 }

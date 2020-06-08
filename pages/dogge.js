@@ -3,13 +3,10 @@ import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
 import Footer from '../components/Footer.js';
-import { getPetProducts } from '../dbFashion';
 
 // Page that links to each item page
-const petLists = getPetProducts();
 
-
-function Dogge() {
+function Dogge({ petLists }) {
   return (
     <div>
       <Head>
@@ -17,28 +14,29 @@ function Dogge() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Nav />
+      <div className="dogge">
+        <div className="dogge-page">
+          <ul>
+            {petLists.map((list) => {
+              return (
+                <li key={list.id}>
+                  <Link href={list.url}>
+                    <a>
+                      <img
+                        className={list.className}
+                        src={list.src}
+                        alt={list.className}
+                      />
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
 
-      <div className="dogge-page">
-        <ul>
-          {petLists.map((list) => {
-            return (
-              <li key={list.id}>
-                <Link href={list.url}>
-                  <a>
-                    <img
-                      className={list.className}
-                      src={list.src}
-                      alt={list.className}
-                    />
-                  </a>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <Footer />
       </div>
-
-      <Footer />
 
       <style jsx>{`
         img {
@@ -77,3 +75,15 @@ function Dogge() {
 }
 
 export default Dogge;
+
+export async function getServerSideProps(context) {
+  const { getPetProducts } = await import('../dbFashion');
+
+  const petLists = getPetProducts(context.params);
+  if (petLists === undefined) {
+    return { props: {} };
+  }
+  return {
+    props: { petLists },
+  };
+}

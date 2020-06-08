@@ -3,11 +3,8 @@ import Head from 'next/head';
 import Footer from '../components/Footer.js';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
-import { getFashionProducts } from '../dbFashion.js';
 
-const fashionProductsList = getFashionProducts();
-
-function Content() {
+function Content({ fashionProductsList }) {
   return (
     <div className="content">
       <Head>
@@ -56,8 +53,7 @@ function Content() {
           display: flex;
           justify-content: space-around;
           align-items: center;
-          background-color: ghostwhite;
-          box-shadow: 0px 3px 5px steelblue;
+          background-color: #e7ecf0;
           margin-left: 10px;
         }
         p {
@@ -79,28 +75,31 @@ function Content() {
           width: 40%;
         }
 
+        .ways {
+          margin-top: ;
+        }
+
+        img {
+          box-shadow: 3px 11px 18px #7d7d7d7d;
+        }
         .dress img {
           width: auto;
-          box-shadow: 3px 3px 4px green;
           margin-left: 70%;
           margin-top: 10px;
         }
 
         .flowerprint img {
-          box-shadow: 3px 3px 4px hotpink;
-          margin-top: -10%;
+          margin-top: -20px;
           margin-left: 50%;
           width: auto;
         }
 
         .jumpsuit img {
-          box-shadow: 0px 3px 4px blue;
           margin-top: 10px;
           margin-left: -80%;
           width: auto;
         }
         .ways img {
-          box-shadow: 3px 3px 4px orange;
           margin-top: -45px;
           margin-left: -90%;
           width: auto;
@@ -110,3 +109,15 @@ function Content() {
   );
 }
 export default Content;
+
+export async function getServerSideProps(context) {
+  const { getFashionProducts } = await import('../dbFashion.js');
+
+  const fashionProductsList = getFashionProducts(context.params);
+  if (fashionProductsList === undefined) {
+    return { props: {} };
+  }
+  return {
+    props: { fashionProductsList },
+  };
+}
