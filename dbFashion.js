@@ -151,7 +151,7 @@ export async function getProductsById(id) {
   
   `;
 
-  console.log(products); // => Array
+  //console.log(products); // => Array
   return products;
   //database select already products, no need to return again
   //return products.find((product) => product.id //=== id);

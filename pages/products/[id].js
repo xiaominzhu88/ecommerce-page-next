@@ -13,7 +13,7 @@ const Product = ({ items }) => {
     setPiece(e.target.value);
   }
   function showPrice(e) {
-    setPrice('€' + piece * items.price);
+    setPrice(piece * items.price);
   }
 
   if (!items) return <div>Item not found!</div>;
@@ -77,7 +77,7 @@ const Product = ({ items }) => {
         <hr />
 
         <button onClick={goCart}>Add items</button>
-        <Link href="/CartForPayment">
+        <Link href="/cartForPayment">
           <a>
             <button className="toCartButton">To CartPage</button>
           </a>
@@ -169,18 +169,13 @@ const Product = ({ items }) => {
 };
 export default Product;
 
-// server side information
-//will not get shared with user, run only on server
-// like 'password'...database connection information...
-//
-
 export async function getServerSideProps(context) {
   //import { getProductsById } from '../../dbFashion';
 
   const { getProductsById } = await import('../../dbFashion.js');
   const items = await getProductsById(context.params.id);
 
-  console.log('item id', context.params.id);
+  //console.log('item id', context.params.id);
 
   //console.log(context);
 
@@ -188,6 +183,8 @@ export async function getServerSideProps(context) {
     return { props: {} };
   }
   return {
-    props: { items: items[0] },
+    props: {
+      items: items[0],
+    },
   };
 }

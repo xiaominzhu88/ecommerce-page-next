@@ -8,19 +8,8 @@ import Cookies from 'js-cookie';
 
 function CartForPayment({ cart }) {
   const [cartArray, setCartArray] = useState(cart);
-  // Localstorage
-  //  function sumCart() {
-  //    if (typeof Storage !== 'undefined') {
-  //      const retrievedObject = localStorage.getItem//('Product');
-  //      return JSON.parse(retrievedObject);
-  //    } else {
-  //      alert('sorry ! No web support!');
-  //    }
-  //  }
-  // const cartCookie = cart.map((eachCart, i) => {
-  //   return eachCart;
-  // });
-  //console.log(cart);
+  const [creditCardNumber, setCreditCardNumber] = useState('');
+  const [cvcNumber, setCvcNumber] = useState('');
 
   //get Price from cookies in an Array, IF cart is UNDEFINED, then return [], else map over to get each price
   const itemPrice =
@@ -29,17 +18,21 @@ function CartForPayment({ cart }) {
       : cartArray.map((cartEach, i) => {
           return cartEach.price;
         });
+  //console.log('price', itemPrice); //price array with number
 
-  // Map each price, convert them into number, reduce to get total sum price
+  // Map each price, reduce to get total sum price
   //If price is UNDEFINED, then return 0, otherwise COUNT from 0!!!!
+
   const total =
     itemPrice === undefined
       ? 0
       : itemPrice
-          .map((x) => Number(x.replace(/[^0-9.-]+/g, '')))
+          //  .map((x) => Number(x.replace(/[^0-9.-]+/g, '')))
           .reduce((a, b) => {
             return a + b;
           }, 0);
+
+  Cookies.set('total', total);
 
   // remove cookie
   const removeCookie = (indexToRemove) => {
@@ -48,7 +41,61 @@ function CartForPayment({ cart }) {
     });
     setCartArray(indexArray);
     Cookies.set('cart', indexArray);
+    //console.log('index-array', indexArray);
   };
+
+  // increment amount
+  function increment(indexToIncrement) {
+    //console.log('cart-array', cartArray);
+    const cartIncrement = cartArray.map((eachCart, i) =>
+      i === indexToIncrement
+        ? {
+            ...eachCart,
+            piece: (+eachCart.piece + 1).toString(),
+            price:
+              eachCart.price + Math.round(eachCart.price / +eachCart.piece),
+          }
+        : eachCart,
+    );
+    //Array pieces from each cookie item ['2','1',...]
+    Cookies.set('cart', cartIncrement);
+    window.location.reload();
+    console.log('Cart-amount', cartIncrement);
+  }
+
+  function decrement(indexToDecrement) {
+    const cartDecrement = cartArray.map((eachCart, i) =>
+      i === indexToDecrement
+        ? {
+            ...eachCart,
+            piece: +eachCart.piece >= 1 ? (+eachCart.piece - 1).toString() : 0,
+
+            price:
+              +eachCart.piece >= 1
+                ? eachCart.price - Math.round(eachCart.price / +eachCart.piece)
+                : 0,
+          }
+        : eachCart,
+    );
+    Cookies.set('cart', cartDecrement);
+    window.location.reload();
+    console.log('Cart-amount', cartDecrement);
+  }
+
+  function inputOnlyNumber(e) {
+    const inputCreditNumber = e.target.value;
+
+    return !Number(inputCreditNumber) || inputCreditNumber.length > 19
+      ? alert('Please enter valid number!')
+      : setCreditCardNumber(inputCreditNumber);
+  }
+
+  function inputOnlyThreeNumber(e) {
+    const inputThreeNumber = e.target.value;
+    return !Number(inputThreeNumber) || inputThreeNumber.length > 3
+      ? alert('Please enter valid number!')
+      : setCvcNumber(inputThreeNumber);
+  }
 
   return (
     <div className="paymentPage">
@@ -84,16 +131,36 @@ function CartForPayment({ cart }) {
         {cartArray.map((cartEach, i) => {
           return (
             <div className="itemCart">
-              <img src={cartEach.src} alt="all cart images"></img>
+              <img src={cartEach.src} alt="all cart images" />
+
               <li key={`${cartEach.name}_i`}> {cartEach.name}</li>
               <li key={`${cartEach.piece}_i`}>
-                Qty:
-                <input
-                  style={{ width: '3em' }}
-                  value={cartEach.piece}
-                  onChange={(e) => e.target.value}
-                  type="number"
-                ></input>{' '}
+                Qty: {cartEach.piece} <br />
+                <button
+                  style={{
+                    width: '2em',
+                    height: '2em',
+                    backgroundColor: 'gray',
+                    color: '#fff',
+                    marginRight: '0.5em',
+                    marginTop: '1em',
+                  }}
+                  onClick={() => increment(i)}
+                >
+                  +
+                </button>
+                <button
+                  style={{
+                    width: '2em',
+                    height: '2em',
+                    backgroundColor: 'gray',
+                    color: '#fff',
+                    marginTop: '1em',
+                  }}
+                  onClick={() => decrement(i)}
+                >
+                  -
+                </button>{' '}
               </li>
               <li key={`${cartEach.price}_i`}> Price: {cartEach.price},00 </li>
               <button onClick={() => removeCookie(i)}>remove</button>
@@ -143,7 +210,50 @@ function CartForPayment({ cart }) {
           </p>
           <hr />
         </div>
+        <div className="payment-form">
+          <form>
+            <label>Credit card number</label>
+            <br />
+            <input
+              onChange={inputOnlyNumber}
+              value={creditCardNumber}
+              style={{ width: '100%', height: '1.5em' }}
+              type="text"
+              placeholder="Credit-card number"
+            ></input>
+            <br />
+            <label>Expires</label>
+            <br />
+            <input
+              style={{ width: '2em', height: '1.5em' }}
+              type="text"
+              placeholder="MM"
+            ></input>
+            <input
+              style={{ width: '2em', height: '1.5em' }}
+              type="text"
+              placeholder="YY"
+            ></input>
+            <br />
+            <label>CVC</label>
+            <br />
+            <input
+              value={cvcNumber}
+              onChange={inputOnlyThreeNumber}
+              style={{ width: '4em', height: '1.5em' }}
+              type="text"
+            ></input>
+          </form>
+        </div>
+        <img
+          style={{ width: '12em', height: '3em', margin: '1em auto' }}
+          src="/paymentCard.png"
+          alt="payment-card"
+        />
         <div>
+          <button onClick={() => alert('Order received,check out to our home')}>
+            Buy
+          </button>
           <Link href="/Thanks">
             <button>Check Out</button>
           </Link>
@@ -152,6 +262,14 @@ function CartForPayment({ cart }) {
 
       <Footer />
       <style jsx>{`
+        form {
+          letter-spacing: 0.1em;
+          padding: 1em;
+          font-family: 'Lucida Console', Monaco, monospace;
+        }
+        input {
+          margin: 1em auto;
+        }
         img {
           width: 5em;
           height: 5em;
@@ -189,7 +307,7 @@ function CartForPayment({ cart }) {
         }
 
         button {
-          width: 4em;
+          width: 5em;
           height: 2em;
           padding: 3px;
           border-radius: 5px;
@@ -217,9 +335,9 @@ function CartForPayment({ cart }) {
 export default CartForPayment;
 
 export function getServerSideProps(context) {
-  //console.log(nextCookies(context));
-
   const { cart } = nextCookies(context);
+
+  //console.log(nextCookies(context));
 
   return {
     props: {

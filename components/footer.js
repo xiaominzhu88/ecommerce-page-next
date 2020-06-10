@@ -13,7 +13,7 @@ function Footer() {
         <h2>Join our mailing list</h2>
         <form>
           <button type="subscribe" name="subscribe" value="subscribe">
-            subscribe now
+            subscribe
           </button>
         </form>
       </div>

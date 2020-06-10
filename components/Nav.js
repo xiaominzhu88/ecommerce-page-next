@@ -13,32 +13,21 @@ function Nav() {
   ];
 
   const cartItems = Cookies.getJSON('cart');
-  //console.log(cartItems);
+  //console.log('items', cartItems);
 
-  //const countArray = cartItems
-  //  ? JSON.parse(cartItems).map((el) => el.piece)
-  //  : [];
+  //  const cartCount = cartItems
+  //    ? cartItems.reduce((acc, cur) => {
+  //        return acc + cur.piece;
+  //      }, 0)
+  //    : '';
   //
-  //const itemsCountSum = countArray
-  //  .map((x) => +x)
-  //  .reduce((acc, cur) => {
-  //    return acc + cur;
-  //  });
-  //console.log(itemsCountSum);
-
-  const cartCount = cartItems
-    ? cartItems.reduce((acc, cur) => {
-        return acc + cur.piece;
-      }, 0)
-    : '';
-
-  const cartSum = cartCount
-    ? Array.from(cartCount)
-        .map((x) => +x)
-        .reduce((acc, cur) => {
-          return acc + cur;
-        })
-    : 0;
+  //  const cartSum = cartCount
+  //    ? Array.from(cartCount)
+  //        .map((x) => +x)
+  //        .reduce((acc, cur) => {
+  //          return acc + cur;
+  //        })
+  //    : 0;
 
   return (
     <>
@@ -82,7 +71,15 @@ function Nav() {
                     borderRadius: '50%',
                   }}
                 >
-                  {cartSum}
+                  {/*  {cartSum} */}
+
+                  {cartItems
+                    ? `${cartItems
+                        //  .filter((item) => item.piece)
+                        .reduce((acc, cur) => {
+                          return acc + +cur.piece;
+                        }, 0)}`
+                    : '0'}
                 </span>{' '}
               </span>{' '}
             </a>
