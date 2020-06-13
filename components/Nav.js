@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
@@ -13,21 +13,20 @@ function Nav() {
   ];
 
   const cartItems = Cookies.getJSON('cart');
-  //console.log('items', cartItems);
+  console.log('Nav-cartItems', cartItems);
 
-  //  const cartCount = cartItems
-  //    ? cartItems.reduce((acc, cur) => {
-  //        return acc + cur.piece;
-  //      }, 0)
-  //    : '';
-  //
-  //  const cartSum = cartCount
-  //    ? Array.from(cartCount)
-  //        .map((x) => +x)
-  //        .reduce((acc, cur) => {
-  //          return acc + cur;
-  //        })
-  //    : 0;
+  // JUST FOR FUN :)
+  // used api folder in pages, which contains dogs json, here useEffect to get response from /api/dogs using fetchData and return them in the console
+  useEffect(() => {
+    async function fetchData() {
+      const dogsResponse = await fetch('/api/dogs');
+      const dogsJson = await dogsResponse.json();
+
+      console.log({ dogsJson });
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -58,26 +57,14 @@ function Nav() {
               <span aria-label="emoji" className="emoji" role="img">
                 🛒
               </span>{' '}
-              <span style={{ color: 'red', marginLeft: '0.5em' }}>
+              <span className="myCartSpan1">
                 My Cart:{' '}
-                <span
-                  style={{
-                    fontSize: '2em',
-                    marginLeft: '0.3em',
-                    color: 'blue',
-                    fontWeight: 'bold',
-                    backgroundColor: 'beige',
-                    padding: '0.5em',
-                    borderRadius: '50%',
-                  }}
-                >
-                  {/*  {cartSum} */}
-
+                <span className="myCartSpan2">
                   {cartItems
                     ? `${cartItems
                         //  .filter((item) => item.piece)
                         .reduce((acc, cur) => {
-                          return acc + +cur.piece;
+                          return acc + Number(cur.piece);
                         }, 0)}`
                     : '0'}
                 </span>{' '}
@@ -88,6 +75,19 @@ function Nav() {
       </nav>
 
       <style jsx>{`
+        .myCartSpan1 {
+          color: red;
+          margin-left: 0.5em;
+        }
+        .myCartSpan2 {
+          margin-left: 0.3em;
+          font-size: 2em;
+          color: blue;
+          font-weight: bold;
+          background-color: beige;
+          padding: 0.5em;
+          border-radius: 50%;
+        }
         .nav {
           margin-bottom: 2em;
         }

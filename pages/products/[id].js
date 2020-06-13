@@ -5,6 +5,7 @@ import Footer from '../../components/Footer';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
 
+// [id] => act as the part of the Path like 'localhost:3000/users/1(which is [id]'
 const Product = ({ items }) => {
   const [price, setPrice] = useState();
   const [piece, setPiece] = useState('');
@@ -53,13 +54,6 @@ const Product = ({ items }) => {
 
         <p>Euro: {items.price}</p>
         <hr />
-        {/*   <select onChange={}>
-          <option>Select Size</option>
-          <option>IT 34</option>
-          <option>IT 36</option>
-          <option>IT 38</option>
-          <option>IT 40</option>
-  </select> */}
 
         <input
           type="number"
@@ -76,14 +70,20 @@ const Product = ({ items }) => {
         <p>Total Price: {price} </p>
         <hr />
 
-        <button onClick={goCart}>Add items</button>
+        <button data-cy="addCart-button" onClick={goCart}>
+          Add items
+        </button>
         <Link href="/cartForPayment">
           <a>
-            <button className="toCartButton">To CartPage</button>
+            <button data-cy="go-to-cart-button" className="toCartButton">
+              To CartPage
+            </button>
           </a>
         </Link>
 
-        {/*<pre>{JSON.stringify(props, null, 2)}</pre>*/}
+        {/* show query from items which from getServerSideProps
+        
+        <pre>{JSON.stringify(props, null, 2)}</pre>*/}
       </main>
 
       <Footer />
@@ -169,15 +169,22 @@ const Product = ({ items }) => {
 };
 export default Product;
 
+// context: object => { params, req, res, query, preview, previewData}
+// params: dynamic route
 export async function getServerSideProps(context) {
-  //import { getProductsById } from '../../dbFashion';
+  // This is without using postgres, db coded manually
+  // import { getProductsById } from '../../dbFashion';
+  // const items = getProductsById(context.params.id)
+  // 1. get products (defined as items) from db which imported
+  // 2. pass items into props
+  // 3.props shows as props
+  // 4. by run getServerSideProps, Next.js runs this function and gives props back which is at the top
 
+  // This is the way using postgres, import function from db where require (postgres)
   const { getProductsById } = await import('../../dbFashion.js');
   const items = await getProductsById(context.params.id);
 
   //console.log('item id', context.params.id);
-
-  //console.log(context);
 
   if (items === undefined) {
     return { props: {} };

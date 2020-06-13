@@ -22,6 +22,7 @@ function Dogge({ petLists }) {
                 <li key={list.id}>
                   <Link href={list.url}>
                     <a>
+                      <p>{list.className}</p>
                       <img
                         className={list.className}
                         src={list.src}
@@ -42,18 +43,17 @@ function Dogge({ petLists }) {
         img {
           width: 250px;
           height: 250px;
-          margin-top: 2em;
           margin-left: 2em;
           box-shadow: 0px 4px 4px hotpink;
           cursor: pointer;
         }
-        .d1 {
+        .Harness {
           grid-area: firstRow;
         }
-        .d2 {
+        .Tag {
           grid-area: secondRow;
         }
-        .d3 {
+        .Tracker {
           grid-area: thirdRow;
         }
 
@@ -64,10 +64,16 @@ function Dogge({ petLists }) {
             '. secondRow .'
             '. . thirdRow';
           grid-gap: 5px;
-          background-image: url('/bgcCool.jpg');
           margin-bottom: 2em;
           padding-bottom: 1em;
           list-style: none;
+        }
+        p {
+          font-size: 1.5em;
+          text-align: center;
+          font-family: monospace;
+          color: hotpink;
+          text-decoration: inherit;
         }
       `}</style>
     </div>

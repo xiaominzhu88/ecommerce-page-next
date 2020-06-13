@@ -43,9 +43,9 @@ const fasionProducts = [
 ];
 
 const petProducts = [
-  { id: '7', url: '/products/7', src: '/dogge1.jpeg', className: 'd1' },
-  { id: '6', url: '/products/6', src: '/dogge2.jpg', className: 'd2' },
-  { id: '5', url: '/products/5', src: '/dogge3.jpg', className: 'd3' },
+  { id: '7', url: '/products/7', src: '/dogge1.jpeg', className: 'Harness' },
+  { id: '6', url: '/products/6', src: '/dogge2.jpg', className: 'Tag' },
+  { id: '5', url: '/products/5', src: '/dogge3.jpg', className: 'Tracker' },
 ];
 
 //const products = [

@@ -107,16 +107,7 @@ function CartForPayment({ cart }) {
 
       <p className="label">
         Items in Cart:{' '}
-        <span
-          style={{
-            fontSize: '1em',
-            marginLeft: '0.3em',
-            color: 'red',
-            fontWeight: 'bold',
-          }}
-        >
-          {cart ? cart.length : 'No Cart'}
-        </span>{' '}
+        <span className="itemsSpan">{cart ? cart.length : 'No Cart'}</span>{' '}
       </p>
       <hr />
 
@@ -130,40 +121,33 @@ function CartForPayment({ cart }) {
       <ul>
         {cartArray.map((cartEach, i) => {
           return (
-            <div className="itemCart">
+            <div className="itemCart" key={i}>
               <img src={cartEach.src} alt="all cart images" />
 
-              <li key={`${cartEach.name}_i`}> {cartEach.name}</li>
-              <li key={`${cartEach.piece}_i`}>
+              <li data-cy="cart-item-name" key={`${cartEach.name}_i`}>
+                {' '}
+                {cartEach.name}
+              </li>
+              <li data-cy="qty-cart" key={`${cartEach.piece}_i`}>
                 Qty: {cartEach.piece} <br />
                 <button
-                  style={{
-                    width: '2em',
-                    height: '2em',
-                    backgroundColor: 'gray',
-                    color: '#fff',
-                    marginRight: '0.5em',
-                    marginTop: '1em',
-                  }}
+                  data-cy="add-one-more-button"
+                  className="increment"
                   onClick={() => increment(i)}
                 >
                   +
                 </button>
-                <button
-                  style={{
-                    width: '2em',
-                    height: '2em',
-                    backgroundColor: 'gray',
-                    color: '#fff',
-                    marginTop: '1em',
-                  }}
-                  onClick={() => decrement(i)}
-                >
+                <button className="decrement" onClick={() => decrement(i)}>
                   -
                 </button>{' '}
               </li>
-              <li key={`${cartEach.price}_i`}> Price: {cartEach.price},00 </li>
-              <button onClick={() => removeCookie(i)}>remove</button>
+              <li data-cy="price-cart" key={`${cartEach.price}_i`}>
+                {' '}
+                Price: {cartEach.price},00{' '}
+              </li>
+              <button data-cy="remove-button" onClick={() => removeCookie(i)}>
+                remove
+              </button>
             </div>
           );
         })}
@@ -176,16 +160,7 @@ function CartForPayment({ cart }) {
         <span aria-label="emoji" className="emoji" role="img">
           🎈 €{' '}
         </span>{' '}
-        <span
-          style={{
-            fontSize: '1em',
-            marginLeft: '0.3em',
-            color: 'blue',
-            fontWeight: 'bold',
-          }}
-        >
-          {total},00
-        </span>{' '}
+        <span className="totalSpan">{total},00</span>{' '}
       </p>
       <hr />
 
@@ -215,53 +190,64 @@ function CartForPayment({ cart }) {
             <label>Credit card number</label>
             <br />
             <input
+              className="credit"
               onChange={inputOnlyNumber}
+              maxLength="19"
               value={creditCardNumber}
-              style={{ width: '100%', height: '1.5em' }}
               type="text"
               placeholder="Credit-card number"
             ></input>
             <br />
             <label>Expires</label>
             <br />
-            <input
-              style={{ width: '2em', height: '1.5em' }}
-              type="text"
-              placeholder="MM"
-            ></input>
-            <input
-              style={{ width: '2em', height: '1.5em' }}
-              type="text"
-              placeholder="YY"
-            ></input>
+            <input className="expires" type="text" placeholder="MM"></input>
+            <input className="expires" type="text" placeholder="YY"></input>
             <br />
             <label>CVC</label>
             <br />
             <input
+              className="cvc"
               value={cvcNumber}
               onChange={inputOnlyThreeNumber}
-              style={{ width: '4em', height: '1.5em' }}
               type="text"
             ></input>
           </form>
         </div>
-        <img
-          style={{ width: '12em', height: '3em', margin: '1em auto' }}
-          src="/paymentCard.png"
-          alt="payment-card"
-        />
+        <img className="paymentImg" src="/paymentCard.png" alt="payment-card" />
         <div>
-          <button onClick={() => alert('Order received,check out to our home')}>
-            Buy
-          </button>
           <Link href="/Thanks">
-            <button>Check Out</button>
+            <button
+              onClick={() => alert('Order received,check out to our home')}
+            >
+              Check Out
+            </button>
           </Link>
         </div>
       </div>
 
       <Footer />
       <style jsx>{`
+        .itemsSpan {
+          font-size: 1em;
+          margin-left: 0.3em;
+          color: red;
+          font-weight: bold;
+        }
+        .increment,
+        .decrement {
+          width: 2em;
+          height: 2em;
+          background-color: gray;
+          color: #fff;
+          margin-right: 0.5em;
+          margin-top: 1em;
+        }
+        .totalSpan {
+          font-size: 1em;
+          margin-left: 0.3em;
+          color: blue;
+          font-weight: bold;
+        }
         form {
           letter-spacing: 0.1em;
           padding: 1em;
@@ -326,6 +312,23 @@ function CartForPayment({ cart }) {
         button:active {
           transition: transformY(4px);
           background-color: rgb(235, 208, 121);
+        }
+        .credit {
+          width: 100%;
+          height: 1.8em;
+        }
+        .expires {
+          width: 2em;
+          height: 1.5em;
+        }
+        .cvc {
+          width: 4em;
+          height: 1.5em;
+        }
+        .paymentImg {
+          width: 12em;
+          height: 3em;
+          margin: 1em auto;
         }
       `}</style>
     </div>

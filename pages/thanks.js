@@ -3,8 +3,13 @@ import Head from 'next/head';
 import Nav from '../components/Nav.js';
 import Footer from '../components/Footer.js';
 import Link from 'next/link';
+import Cookies from 'js-cookie';
 
 function Thanks() {
+  function resetCookies() {
+    Cookies.remove('cart');
+    Cookies.remove('total');
+  }
   return (
     <div>
       <div className="thankPage">
@@ -20,7 +25,7 @@ function Thanks() {
           <h4>Your order was completed successfully</h4>
           <Link href="/about">
             <a>
-              <button>To home</button>
+              <button onClick={resetCookies}>To home</button>
             </a>
           </Link>
         </div>
