@@ -4,28 +4,40 @@ import Nav from '../../components/Nav';
 import Footer from '../../components/Footer';
 import Cookies from 'js-cookie';
 import Link from 'next/link';
+import { NextPageContext } from 'next';
+
+type Items = {
+  id: string;
+  name: string;
+  price: number;
+  src: string;
+  h2: string;
+  h3: string;
+  p: string;
+};
+type Props = { items: Items };
 
 // [id] => act as the part of the Path like 'localhost:3000/users/1(which is [id]'
-const Product = ({ items }) => {
-  const [price, setPrice] = useState();
-  const [piece, setPiece] = useState('');
+const Product = (props: Props) => {
+  const [price, setPrice] = useState<number | string>();
+  const [piece, setPiece] = useState<number>();
 
   function changePieces(e) {
     setPiece(e.target.value);
   }
-  function showPrice(e) {
-    setPrice(piece * items.price);
+  function showPrice() {
+    setPrice(piece * props.items.price);
   }
 
-  if (!items) return <div>Item not found!</div>;
+  if (!props.items) return <div>Item not found!</div>;
 
   function goCart() {
     const product = {
       piece: piece,
       price: price,
-      name: items.name,
-      src: items.src,
-      id: items.id,
+      name: props.items.name,
+      src: props.items.src,
+      id: props.items.id,
     };
 
     const newCart = Cookies.getJSON('cart') || [];
@@ -39,30 +51,32 @@ const Product = ({ items }) => {
   return (
     <div>
       <Head>
-        <title>{items.name}</title>
+        <title>{props.items.name}</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Nav />
-      <hr />
 
       <main>
-        <h1>{items.h2}</h1>
-        <h2>{items.name}</h2>
-        <img src={items.src} alt="items" />
-        <h3>{items.h3}</h3>
-        <p>{items.p}</p>
+        <h1>{props.items.h2}</h1>
+        <h2>{props.items.name}</h2>
+        <img src={props.items.src} alt="items" />
+        <h3>{props.items.h3}</h3>
+        <p>{props.items.p}</p>
 
-        <p>Euro: {items.price}</p>
+        <p>Euro: {props.items.price}</p>
         <hr />
 
-        <input
-          type="number"
-          min="1"
-          placeholder="pieces"
-          onChange={changePieces}
-          onKeyUp={showPrice}
-          value={piece}
-        />
+        <form>
+          <input
+            type="text"
+            min="1"
+            step="10"
+            placeholder="pieces"
+            onChange={changePieces}
+            onKeyUp={() => showPrice()}
+            value={piece}
+          />
+        </form>
         <br />
         <hr />
 
@@ -73,6 +87,7 @@ const Product = ({ items }) => {
         <button data-cy="addCart-button" onClick={goCart}>
           Add items
         </button>
+
         <Link href="/cartForPayment">
           <a>
             <button data-cy="go-to-cart-button" className="toCartButton">
@@ -171,20 +186,22 @@ export default Product;
 
 // context: object => { params, req, res, query, preview, previewData}
 // params: dynamic route
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: NextPageContext) {
+  const id = context.query.id;
+  //const name = context.query.name;
   // This is without using postgres, db coded manually
   // import { getProductsById } from '../../dbFashion';
   // const items = getProductsById(context.params.id)
   // 1. get products (defined as items) from db which imported
   // 2. pass items into props
-  // 3.props shows as props
+  // 3. props shows as props on top
   // 4. by run getServerSideProps, Next.js runs this function and gives props back which is at the top
 
   // This is the way using postgres, import function from db where require (postgres)
   const { getProductsById } = await import('../../dbFashion.js');
-  const items = await getProductsById(context.params.id);
+  const items = await getProductsById(id);
 
-  //console.log('item id', context.params.id);
+  console.log('item id', id);
 
   if (items === undefined) {
     return { props: {} };

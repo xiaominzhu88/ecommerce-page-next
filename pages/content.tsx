@@ -3,8 +3,19 @@ import Head from 'next/head';
 import Footer from '../components/Footer.js';
 import Nav from '../components/Nav.js';
 import Link from 'next/link';
+import { NextPageContext } from 'next';
 
-function Content({ fashionProductsList }) {
+type FashionProductsList = {
+  id: string;
+  className: string;
+  src: string;
+  url: string;
+  h3: string;
+  p: string;
+};
+type Props = { fashionProductsList: FashionProductsList[] };
+
+function Content(props: Props) {
   return (
     <div className="content">
       <Head>
@@ -14,7 +25,7 @@ function Content({ fashionProductsList }) {
       <Nav />
 
       <ul>
-        {fashionProductsList.map((fashionList) => {
+        {props.fashionProductsList.map((fashionList) => {
           return (
             <li className={fashionList.className} key={fashionList.id}>
               <div className={fashionList.className}>
@@ -110,10 +121,10 @@ function Content({ fashionProductsList }) {
 }
 export default Content;
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: NextPageContext) {
   const { getFashionProducts } = await import('../dbFashion.js');
 
-  const fashionProductsList = getFashionProducts(context.params);
+  const fashionProductsList = getFashionProducts();
   if (fashionProductsList === undefined) {
     return { props: {} };
   }
