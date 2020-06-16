@@ -1,30 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
+## This project is an ecommerce-store created by Next.js
 
-## Getting Started
+### It contains product Pages with fashion and pet Products
 
-First, run the development server:
+On each single product page, user is able to input quantity, the total price will be calculated 
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+  User is able to add choosed items to the cart page with click on "add Items" button on each item page, it will save those items as information cookies. After click on "to cartpage", user will be linked to the cart Page which shows all choosed items and shipment information and a "checkout" button. 
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  On cart page, user is able to update items quantity, or remove each item, total price and items cart will be automatically updated. 
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+  After click on "checkout" button, user will be linked to a thank you page.
+  
+  A shopping cart with the current number of cart items will be showed on all pages.
+  
+### This Project is also using postgreSQL database which created with migrations sql for each items
 
-## Learn More
+### This Project contains Tests Pages which test button, content functions using cypress and jest
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/zeit/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### There are also 2 pages writen in TypeScript 
