@@ -6,6 +6,8 @@ import Cookies from 'js-cookie';
 import Link from 'next/link';
 import { NextPageContext } from 'next';
 
+// using typescript: 	yarn add --dev typescript @types/node
+
 type Items = {
   id: string;
   name: string;
@@ -73,6 +75,7 @@ const Product = (props: Props) => {
             step="10"
             placeholder="pieces"
             onChange={changePieces}
+            // without called showPrice, got this error: Type '(event: FormEvent<HTMLInputElement>) => void' is not assignable to type '() => any'
             onKeyUp={() => showPrice()}
             value={piece}
           />
@@ -88,6 +91,7 @@ const Product = (props: Props) => {
           Add items
         </button>
 
+        {/* Use Typescript, for Link error add : yarn upgrade @types/react@latest  */}
         <Link href="/cartForPayment">
           <a>
             <button data-cy="go-to-cart-button" className="toCartButton">
@@ -186,6 +190,7 @@ export default Product;
 
 // context: object => { params, req, res, query, preview, previewData}
 // params: dynamic route
+// NextPageContext: use typescript
 export async function getServerSideProps(context: NextPageContext) {
   const id = context.query.id;
   //const name = context.query.name;

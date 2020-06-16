@@ -5,6 +5,8 @@ import Nav from '../components/Nav.js';
 import Link from 'next/link';
 import { NextPageContext } from 'next';
 
+// using typescript: 	yarn add --dev typescript @types/node
+
 type FashionProductsList = {
   id: string;
   className: string;
@@ -29,6 +31,7 @@ function Content(props: Props) {
           return (
             <li className={fashionList.className} key={fashionList.id}>
               <div className={fashionList.className}>
+                {/* Use Typescript, for Link error add : yarn upgrade @types/react@latest  */}
                 <Link href={fashionList.url}>
                   <a>
                     <img

@@ -105,11 +105,10 @@ function CartForPayment({ cart }) {
       </Head>
       <Nav />
 
-      <p className="label">
+      {/* <p className="label">
         Items in Cart:{' '}
         <span className="itemsSpan">{cart ? cart.length : 'No Cart'}</span>{' '}
-      </p>
-      <hr />
+      </p> */}
 
       <p className="cart label">
         Cart:
