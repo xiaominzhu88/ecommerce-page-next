@@ -36,7 +36,7 @@ function Pet({ petProducts }) {
           {petProducts.map((pet) => {
             return (
               <li key={pet.id}>
-                <Link href="/Dogge">
+                <Link href="/dogge">
                   <a>
                     <img
                       className={pet.className}
