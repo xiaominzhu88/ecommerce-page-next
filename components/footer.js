@@ -18,6 +18,7 @@ function Footer() {
         </form>
       </div>
       <p>© 2023 by Zhu</p>
+
       <style jsx>{`
       .background {
           background-image: url('/cool6.jpg');

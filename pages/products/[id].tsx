@@ -23,12 +23,12 @@ type Props = { items: Items };
 const Product = (props: Props) => {
   const [price, setPrice] = useState<number>();
   //const [piece, setPiece] = useState<number | undefined>(undefined);
-  const [piece, setPiece] = useState();
+  const [piece, setPiece] = useState('');
 
   function changePieces(e: any) {
     setPiece(e.target.value);
   }
-  function showPrice(piece?: any) {
+  function showPrice() {
     setPrice(piece * props.items.price);
   }
 
@@ -77,7 +77,7 @@ const Product = (props: Props) => {
             placeholder="pieces"
             onChange={changePieces}
             // without called showPrice, got this error: Type '(event: FormEvent<HTMLInputElement>) => void' is not assignable to type '() => any'
-            onKeyUp={() => showPrice()}
+            onKeyUp={showPrice}
             value={piece}
           />
         </form>
@@ -88,7 +88,7 @@ const Product = (props: Props) => {
         <p>Total Price: {price} </p>
         <hr />
 
-        <button data-cy="addCart-button" onClick={goCart}>
+        <button data-cy="addCart-button" onClick={() => goCart()}>
           Add items
         </button>
 
