@@ -1,8 +1,8 @@
 import React from 'react';
 import Head from 'next/head';
-import Nav from '../components/Nav.js';
+import Nav from '../components/Nav';
 import Link from 'next/link';
-import Footer from '../components/Footer.js';
+import Footer from '../components/Footer';
 
 // Page that links to each item page
 

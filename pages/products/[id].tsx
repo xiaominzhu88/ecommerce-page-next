@@ -21,13 +21,14 @@ type Props = { items: Items };
 
 // [id] => act as the part of the Path like 'localhost:3000/users/1(which is [id]'
 const Product = (props: Props) => {
-  const [price, setPrice] = useState<number | string>();
-  const [piece, setPiece] = useState<number>();
+  const [price, setPrice] = useState<number>();
+  //const [piece, setPiece] = useState<number | undefined>(undefined);
+  const [piece, setPiece] = useState();
 
-  function changePieces(e) {
+  function changePieces(e: any) {
     setPiece(e.target.value);
   }
-  function showPrice() {
+  function showPrice(piece?: any) {
     setPrice(piece * props.items.price);
   }
 

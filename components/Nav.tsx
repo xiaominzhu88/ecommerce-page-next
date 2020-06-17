@@ -3,6 +3,12 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
 
+type CartItem = {
+  piece: Number;
+  acc: String;
+  cur: Number;
+};
+
 function Nav() {
   const linkList = [
     { name: 'HOME', url: '/' },
@@ -60,12 +66,11 @@ function Nav() {
               <span className="myCartSpan1">
                 My Cart:{' '}
                 <span className="myCartSpan2">
+
                   {cartItems
-                    ? `${cartItems
-                        //  .filter((item) => item.piece)
-                        .reduce((acc, cur) => {
-                          return acc + Number(cur.piece);
-                        }, 0)}`
+                    ? `${cartItems.reduce((acc: string, cur: CartItem) => {
+                        return acc + Number(cur.piece);
+                      }, 0)}`
                     : '0'}
                 </span>{' '}
               </span>{' '}

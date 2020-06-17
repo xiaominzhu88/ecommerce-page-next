@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Nav from '../components/Nav.js';
+import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
 function Contact() {
@@ -12,18 +12,16 @@ function Contact() {
       </Head>
       <Nav />
       <div className="contact">
-       
-          <ul>
-            <li>Name:</li>
-            <input type="text" />
-            <li>Tel:</li>
-            <input type="text" />
-            <li>E-mail:</li>
-            <input type="text" />
-            <li>Adress:</li>
-            <input type="text" />
-          </ul>
-       
+        <ul>
+          <li>Name:</li>
+          <input type="text" />
+          <li>Tel:</li>
+          <input type="text" />
+          <li>E-mail:</li>
+          <input type="text" />
+          <li>Adress:</li>
+          <input type="text" />
+        </ul>
       </div>
 
       <Footer />

@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
-import Footer from '../components/Footer.js';
-import Nav from '../components/Nav.js';
+import Footer from '../components/Footer';
+import Nav from '../components/Nav';
 import Link from 'next/link';
 import { NextPageContext } from 'next';
 
@@ -14,6 +14,7 @@ type FashionProductsList = {
   url: string;
   h3: string;
   p: string;
+  name: string;
 };
 type Props = { fashionProductsList: FashionProductsList[] };
 
