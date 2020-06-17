@@ -23,10 +23,10 @@ type Props = { items: Items };
 const Product = (props: Props) => {
   const [price, setPrice] = useState<number>();
   //const [piece, setPiece] = useState<number | undefined>(undefined);
-  const [piece, setPiece] = useState('');
+  const [piece, setPiece] = useState(1);
 
   function changePieces(e: any) {
-    setPiece(e.target.value);
+    setPiece(Number(e.target.value));
   }
   function showPrice() {
     setPrice(piece * props.items.price);
