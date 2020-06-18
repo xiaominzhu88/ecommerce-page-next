@@ -19,7 +19,7 @@ function Nav() {
   ];
 
   const cartItems = Cookies.getJSON('cart');
-  console.log('Nav-cartItems', cartItems);
+  //console.log('Nav-cartItems', cartItems);
 
   // JUST FOR FUN :)
   // used api folder in pages, which contains dogs json, here useEffect to get response from /api/dogs using fetchData and return them in the console
@@ -35,7 +35,7 @@ function Nav() {
   }, []);
 
   return (
-    <>
+    <div className="App">
       <Head>
         <title>Ecommerce-Store</title>
         <link rel="icon" href="/favicon.png" />
@@ -66,7 +66,6 @@ function Nav() {
               <span className="myCartSpan1">
                 My Cart:{' '}
                 <span className="myCartSpan2">
-
                   {cartItems
                     ? `${cartItems.reduce((acc: string, cur: CartItem) => {
                         return acc + Number(cur.piece);
@@ -80,6 +79,9 @@ function Nav() {
       </nav>
 
       <style jsx>{`
+        .App {
+          width: 100%;
+        }
         .myCartSpan1 {
           color: red;
           margin-left: 0.5em;
@@ -153,8 +155,34 @@ function Nav() {
           position: relative;
           top: 10px;
         }
+
+        @media only screen and (max-width: 450px) {
+          h1 {
+            font-size: 1.8em;
+          }
+          .nav {
+            margin: 1.5em auto;
+          }
+          .nav-bar {
+            position: fixed;
+            top: 10px;
+            left: 0;
+            width: 100%;
+            height: 8em;
+          }
+
+          .nav-bar p {
+            font-family: 'Lucida Console', Monaco, monospace;
+            font-size: 0.8em;
+          }
+          .header {
+            display: flex;
+            height: 30px;
+            top: 18em;
+          }
+        }
       `}</style>
-    </>
+    </div>
   );
 }
 export default Nav;

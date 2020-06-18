@@ -18,24 +18,25 @@ function About() {
         <div className="blog">
           <h3>It ’s mine, and it ’s mine after all</h3>
         </div>
-        <hr />
       </div>
-      <p className="about-text">
-        Every day is a fashion show, the world is your runway
+      <div className="about">
+        <p className="about-text1">
+          Every day is a fashion show, the world is your runway
+          <br />
+          Don't always need a plan, sometimes you just need to breathe, trust,
+          let go, <br />
+          And see what happens...
+        </p>{' '}
         <br />
-        Don't always need a plan, sometimes you just need to breathe, trust, let
-        go, <br />
-        And see what happens...
-      </p>{' '}
-      <br />
-      <p className="about-text">
-        {' '}
-        " A girl should be two thing:
-        <br />
-        Who and What she wants "
-        <br />
-        -Coco Chanel
-      </p>
+        <p className="about-text2">
+          {' '}
+          " A girl should be two thing:
+          <br />
+          Who and What she wants "
+          <br />
+          -Coco Chanel
+        </p>
+      </div>
       <Footer />
       <style jsx>{`
         .about-us {
@@ -58,17 +59,40 @@ function About() {
           padding: 0.5em;
           background-image: url('/light.jpg');
           background-repeat: no-repeat;
-          width: vw;
-          height: vh;
+          width: 50vw;
+          height: 25vh;
           background-attachment: fixed;
           background-size: cover;
           color: #fff;
           margin-left: 2em;
         }
-        .about-text {
+
+        .about-text1,
+        .about-text2 {
           text-align: center;
           letter-spacing: 0.2em;
           line-height: 2em;
+        }
+
+        @media only screen and (max-width: 450px) {
+          .about-us {
+            margin: 10em;
+            text-align: center;
+          }
+
+          .blog {
+            margin-top: 2em;
+            height: 13em;
+          }
+          h2,
+          h3 {
+            padding: 10px;
+          }
+        }
+        .about {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 2em;
         }
       `}</style>
     </>

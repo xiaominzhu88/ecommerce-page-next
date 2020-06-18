@@ -16,8 +16,9 @@ function Footer() {
             subscribe
           </button>
         </form>
+
+        <p>© 2023 by Zhu</p>
       </div>
-      <p>© 2023 by Zhu</p>
 
       <style jsx>{`
       .background {
@@ -57,6 +58,21 @@ function Footer() {
           font-weight:bold;
           cursor:pointer;
         }
+        @media only screen and (max-width: 450px) {
+        .background{
+          position: fixed;
+          bottom:10px;
+          left: 0;
+          width: 100%;
+          height:10em;
+        }
+        p{
+          color:#fff;
+        }
+        button {
+          color:#fff;
+        }
+      }
       `}</style>
     </>
   );
