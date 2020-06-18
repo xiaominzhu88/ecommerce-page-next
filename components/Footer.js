@@ -46,6 +46,7 @@ function Footer() {
           text-align: center;
           font-weight: bold;
           font-family:Didot, serif;
+          color:#fff;
 
         }
 
@@ -66,9 +67,7 @@ function Footer() {
           width: 100%;
           height:10em;
         }
-        p{
-          color:#fff;
-        }
+       
         button {
           color:#fff;
         }

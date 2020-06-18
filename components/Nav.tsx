@@ -34,6 +34,12 @@ function Nav() {
     fetchData();
   }, []);
 
+  const cartReduce = cartItems
+    ? cartItems.reduce((acc: string, cur: CartItem) => {
+        return acc + Number(cur.piece);
+      }, 0)
+    : '0';
+
   return (
     <div className="App">
       <Head>
@@ -66,11 +72,8 @@ function Nav() {
               <span className="myCartSpan1">
                 My Cart:{' '}
                 <span className="myCartSpan2">
-                  {cartItems
-                    ? `${cartItems.reduce((acc: string, cur: CartItem) => {
-                        return acc + Number(cur.piece);
-                      }, 0)}`
-                    : '0'}
+                  {/* {cartItems ? `${cartReduce}` : '0'} */}
+                  {cartReduce}
                 </span>{' '}
               </span>{' '}
             </a>
