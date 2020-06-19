@@ -21,10 +21,6 @@ The shop features following pages and functionality:
 - after click on "checkout" button, user will be linked to a thank you page.
 - the header shows a shopping cart with the current number of items on all pages.
 
-About Screenshot: ![screenshot](/public/screenshot.png)
-Cart Page Screenshot: ![screenshot](/public/cart.png)
-Fashion-Shop Page Screenshot: ![screenshot](/public/shopScreenshot.png)
-
 ## Technologies used
 
 This project is a Next.js app which makes use of PostgresQL database. Migrations are set up with Ley. It uses cookies to keep track of items in cart and their amount. Some pages and components are written using Typescript. The project contains testing with Cypress. Deployment was carried out with Heroku.
@@ -67,3 +63,7 @@ To drop the last migration run the following in your terminal:
 - Click on the button for "Enable Automatic Deploys"
 - Go back to the Overview tab and click on "Configure Add-On"
 - Search for "Postgres" and select "Heroku Postgres" from the results
+
+About Screenshot: ![screenshot | 100x50](/public/screenshot.png)
+Cart Page Screenshot: ![screenshot | 100x50](/public/cart.png)
+Fashion-Shop Page Screenshot: ![screenshot | 100x50](/public/shopScreenshot.png)
