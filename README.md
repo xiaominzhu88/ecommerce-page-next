@@ -1,17 +1,69 @@
-This project is an ecommerce-store created by Next.js
-It contains product Pages with fashion and pet Products
-On each single product page, user is able to input quantity, the total price will be calculated
+<!-- Create a readme with:
+title
+description
+all technologies used
+1 or 2 screenshots
+setup instructions
+deployment instructions -->
 
-User is able to add choosed items to the cart page with click on "add Items" button on each item page, it will save those items as information cookies. After click on "to cartpage", user will be linked to the cart Page which shows all choosed items and shipment information and a "checkout" button.
+# FASHION & PET STORE online_shop
 
-On cart page, user is able to update items quantity, or remove each item, total price and items cart will be automatically updated.
+## Description
 
-After click on "checkout" button, user will be linked to a thank you page.
+This project is an online shop of interior decoration items created with Next.js.
 
-A shopping cart with the current number of cart items will be showed on all pages.
+The shop features following pages and functionality:
 
-This Project is also using postgreSQL database which created with migrations sql for each items
-This Project contains Tests Pages which test button, content functions using cypress and jest
-There are also 2 pages writen in TypeScript
+- a products page which contains Fashion and Pet-Store items
+- a page for each single product on which user is able to input quantity, the total price will be calculated
+- a shopping cart page containing a list where products appear when you click on the "add Items" button on the single product page, which also shows the total price of all products
+- after click on "to cartpage", user will be linked to a cart page which shows the total and shipping / payment information, on this page, user is able to update items quantity, or remove each item, total price and items cart will be automatically updated.
+- after click on "checkout" button, user will be linked to a thank you page.
+- the header shows a shopping cart with the current number of items on all pages.
 
-![screenshot](/public/screenshot.png)
+About Screenshot: ![screenshot](/public/screenshot.png)
+Cart Page Screenshot: ![screenshot](/public/cart.png)
+Fashion-Shop Page Screenshot: ![screenshot](/public/shopScreenshot.png)
+
+## Technologies used
+
+This project is a Next.js app which makes use of PostgresQL database. Migrations are set up with Ley. It uses cookies to keep track of items in cart and their amount. Some pages and components are written using Typescript. The project contains testing with Cypress. Deployment was carried out with Heroku.
+
+## Setup instructions
+
+### Database Setup
+
+Copy the .env.example file to .env and add the database connection information.
+
+You'll also need PostgreSQL for this.
+
+PostgreSQL Installation instructions
+
+Follow the instructions from the PostgreSQL step on https://www.postgresql.org/docs/10/runtime.html
+
+Run the following queries inside of psql to set up the database and the user:
+
+CREATE DATABASE nextjs_ecommerce_store;
+CREATE USER nextjs_ecommerce_score WITH ENCRYPTED PASSWORD 'nextjs_ecommerce_store';
+GRANT ALL PRIVILEGES ON DATABASE nextjs_ecommerce_store TO nextjs_ecommerce_score;
+Then, to connect to the database using this new user, quit psql and reconnect:
+
+\q
+psql -U nextjs_ecommerce_score nextjs_ecommerce_store
+
+You can run the migrations with the following command:
+`yarn migrate up`
+
+To drop the last migration run the following in your terminal:
+`yarn migrate down`
+
+### Deployment instructions for Heroku
+
+- Sign up for Heroku: https://signup.heroku.com/
+- Create a new App
+- Choose a name and select your region
+- Click on the button in the middle called "Connect to GitHub"
+- Search for your repository in the search box at the bottom of the page and click on the "Connect" button
+- Click on the button for "Enable Automatic Deploys"
+- Go back to the Overview tab and click on "Configure Add-On"
+- Search for "Postgres" and select "Heroku Postgres" from the results
