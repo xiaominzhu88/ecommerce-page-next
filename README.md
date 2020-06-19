@@ -13,3 +13,5 @@ A shopping cart with the current number of cart items will be showed on all page
 This Project is also using postgreSQL database which created with migrations sql for each items
 This Project contains Tests Pages which test button, content functions using cypress and jest
 There are also 2 pages writen in TypeScript
+
+[screenshot]('/public/screenshot.png')
