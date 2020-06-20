@@ -22,12 +22,16 @@ type Props = { items: Items };
 // [id] => act as the part of the Path like 'localhost:3000/users/1(which is [id]'
 const Product = (props: Props) => {
   const [price, setPrice] = useState<number>();
-  //const [piece, setPiece] = useState<number | undefined>(undefined);
+  // typescript
+  // const [piece, setPiece] = useState<number | undefined>(undefined);
   const [piece, setPiece] = useState(1);
 
+  // typescript error: Parameter 'e' implicitly has an 'any' type
   function changePieces(e: any) {
     setPiece(Number(e.target.value));
   }
+
+  // after line 31, type of piece is updated into number
   function showPrice() {
     setPrice(piece * props.items.price);
   }

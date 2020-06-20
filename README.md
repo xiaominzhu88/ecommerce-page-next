@@ -23,7 +23,19 @@ The shop features following pages and functionality:
 
 ## Technologies used
 
-This project is a Next.js app which makes use of PostgresQL database. Migrations are set up with Ley. It uses cookies to keep track of items in cart and their amount. Some pages and components are written using Typescript. The project contains testing with Cypress. Deployment was carried out with Heroku.
+This project is a Next.js app which makes use of PostgresQL database.
+
+Migrations are set up with Ley.
+
+- [ ] [`ley`](https://github.com/lukeed/ley)
+
+- [ ] [`postgres`](https://www.npmjs.com/package/postgres)
+
+It uses cookies to keep track of items in cart and their amount.
+
+Some pages and components are written using Typescript.
+
+The project contains testing with Cypress. Deployment was carried out with Heroku.
 
 ## Setup instructions
 
@@ -37,14 +49,18 @@ PostgreSQL Installation instructions
 
 Follow the instructions from the PostgreSQL step on https://www.postgresql.org/docs/10/runtime.html
 
-Run the following queries inside of psql to set up the database and the user:
+- [ ] Run the following queries inside of psql to set up the database and the user:
 
-CREATE DATABASE nextjs_ecommerce_store;
-CREATE USER nextjs_ecommerce_score WITH ENCRYPTED PASSWORD 'nextjs_ecommerce_store';
-GRANT ALL PRIVILEGES ON DATABASE nextjs_ecommerce_store TO nextjs_ecommerce_score;
-Then, to connect to the database using this new user, quit psql and reconnect:
+- [ ] CREATE DATABASE nextjs_ecommerce_store;
+
+- [ ] CREATE USER nextjs_ecommerce_score WITH ENCRYPTED PASSWORD 'nextjs_ecommerce_store';
+
+- [ ] GRANT ALL PRIVILEGES ON DATABASE nextjs_ecommerce_store TO nextjs_ecommerce_score;
+
+- [ ] Then, to connect to the database using this new user, quit psql and reconnect:
 
 \q
+
 psql -U nextjs_ecommerce_score nextjs_ecommerce_store
 
 You can run the migrations with the following command:
@@ -64,6 +80,14 @@ To drop the last migration run the following in your terminal:
 - Go back to the Overview tab and click on "Configure Add-On"
 - Search for "Postgres" and select "Heroku Postgres" from the results
 
-About Screenshot: ![screenshot | 100x50](/public/screenshot.png)
-Cart Page Screenshot: ![screenshot | 100x50](/public/cart.png)
-Fashion-Shop Page Screenshot: ![screenshot | 100x50](/public/shopScreenshot.png)
+About Page Screenshot:
+
+<img src="/public/screenshot.png" width="500" height="350">
+
+Cart Page Screenshot:
+
+<img src="/public/cart.png" width="450" height="250">
+
+Fashion-Shop Page Screenshot:
+
+<img src="/public/shopScreenshot.png" width="450" height="250">
