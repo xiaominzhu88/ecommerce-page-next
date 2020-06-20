@@ -81,16 +81,3 @@ To drop the last migration run the following in your terminal:
 - Go back to the Overview tab and click on "Configure Add-On"
 - Search for "Postgres" and select "Heroku Postgres" from the results
 
-About Page Screenshot: 
-
-<img src="/public/screenshot.png" width="500" height="350">
-
-
-Cart Page Screenshot: 
-
-<img src="/public/cart.png" width="450" height="250">
-
-
-Fashion-Shop Page Screenshot: 
-
-<img src="/public/shopScreenshot.png" width="450" height="250">.
