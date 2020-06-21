@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, MouseEvent, ChangeEvent } from 'react';
 import Head from 'next/head';
 import Nav from '../../components/Nav';
 import Footer from '../../components/Footer';
@@ -27,7 +27,7 @@ const Product = (props: Props) => {
   const [piece, setPiece] = useState(1);
 
   // typescript error: Parameter 'e' implicitly has an 'any' type
-  function changePieces(e: any) {
+  function changePieces(e: ChangeEvent<HTMLInputElement>) {
     setPiece(Number(e.target.value));
   }
 
