@@ -18,7 +18,7 @@ The shop features following pages and functionality:
 - a page for each single product on which user is able to choose a quantity to purchase and the total price will be calculated
 - A shopping cart page containing a list of products which have been added to the cart using the "Add Items" button on the single product page, controls to update the quantity of each item and the total price of all products
 - after click on "checkout" button, user will be linked to a thank you page.
-- the header shows a shopping cart with the current number of items on all pages.
+- the header is displayed on all page, and shows a shopping cart with the current number of items
 
 ## Technologies used
 
