@@ -40,7 +40,7 @@ The project contains end to end tests with Cypress. Deployment was carried out w
 
 ### Database Setup
 
-Copy the .env.example file to .env and add the database connection information.
+Copy the `.env.example` file to `.env` and add the database connection information.
 
 You'll also need PostgreSQL for this.
 
