@@ -36,7 +36,7 @@ Some pages and components are written using TypeScript.
 
 The project contains end to end tests with Cypress. Deployment was carried out with Heroku.
 
-## Setup instructions
+## Setup Instructions
 
 ### Database Setup
 
