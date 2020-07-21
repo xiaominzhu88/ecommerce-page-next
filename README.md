@@ -10,7 +10,7 @@ deployment instructions -->
 
 ## Description
 
-This project is an online shop of interior decoration items created with Next.js.
+This project is an online fashion and pet accessory shop created with Next.js.
 
 The shop features following pages and functionality:
 
@@ -91,5 +91,4 @@ Cart Page Screenshot:
 Fashion-Shop Page Screenshot:
 
 <img src="/public/shopScreenshot.png" width="450" height="250">.
-
 
