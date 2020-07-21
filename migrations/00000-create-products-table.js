@@ -6,8 +6,6 @@ exports.up = async (sql) => {
 
 exports.down = async (sql) => {
   sql`
-	
 	DROP TABLE products
-	
-	`;
+  `;
 };
