@@ -208,7 +208,7 @@ function CartForPayment({ cart }) {
         </div>
         <img className="paymentImg" src="/paymentCard.png" alt="payment-card" />
         <div>
-          <Link href="/Thanks">
+          <Link href="/thanks">
             <button
               onClick={() => alert('Order received,check out to our home')}
             >

@@ -1,11 +1,3 @@
-<!-- Create a readme with:
-title
-description
-all technologies used
-1 or 2 screenshots
-setup instructions
-deployment instructions -->
-
 # FASHION & PET STORE online_shop
 
 ## Description

@@ -8,7 +8,7 @@ import { NextPageContext } from 'next';
 
 // using typescript: 	yarn add --dev typescript @types/node
 
-type Items = {
+type Item = {
   id: string;
   name: string;
   price: number;
@@ -17,7 +17,7 @@ type Items = {
   h3: string;
   p: string;
 };
-type Props = { items: Items };
+type Props = { items: Item };
 
 // [id] => act as the part of the Path like 'localhost:3000/users/1(which is [id]'
 const Product = (props: Props) => {
