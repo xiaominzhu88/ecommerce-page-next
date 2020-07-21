@@ -22,7 +22,7 @@ The shop features following pages and functionality:
 
 ## Technologies Used
 
-This project is a Next.js app which makes use of PostgresQL database.
+This project is a Next.js app which makes use of a PostgresQL database.
 
 Migrations are set up with Ley.
 
