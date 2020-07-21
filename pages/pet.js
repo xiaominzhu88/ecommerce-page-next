@@ -10,8 +10,9 @@ function Pet({ petProducts }) {
   return (
     <>
       <Head>
-        <title>Ecommerce-Store</title>
+        <title>pet</title>
         <link rel="icon" href="/favicon.png" />
+        <meta name="description" content="pet" />
       </Head>
       <Nav />
 

@@ -7,8 +7,9 @@ function About() {
   return (
     <>
       <Head>
-        <title>Ecommerce-Store</title>
+        <title>about</title>
         <link rel="icon" href="/favicon.png" />
+        <meta name="description" content="about" />
       </Head>
       <Nav />
       <div className="about-us">

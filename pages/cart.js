@@ -94,8 +94,9 @@ function CartForPayment({ cart }) {
   return (
     <div className="paymentPage">
       <Head>
-        <title>Ecommerce-Store</title>
+        <title>cart</title>
         <link rel="icon" href="/favicon.png" />
+        <meta name="description" content="cart" />
       </Head>
       <Nav />
 

@@ -10,8 +10,9 @@ function Dogge({ petLists }) {
   return (
     <div>
       <Head>
-        <title>Ecommerce-Store</title>
+        <title>dogge</title>
         <link rel="icon" href="/favicon.png" />
+        <meta name="description" content="dogge" />
       </Head>
       <Nav />
       <div className="dogge">

@@ -5,9 +5,7 @@ function Footer() {
     <>
       <div className="background">
         <h2>Join our mailing list</h2>
-        <form>
-          <button type="button">subscribe</button>
-        </form>
+        <button type="button">subscribe</button>
 
         <p>© 2023 by Zhu</p>
       </div>

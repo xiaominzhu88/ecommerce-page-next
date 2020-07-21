@@ -15,8 +15,9 @@ function Thanks() {
     <div>
       <div className="thankPage">
         <Head>
-          <title>Ecommerce-Store</title>
+          <title>thanks</title>
           <link rel="icon" href="/favicon.png" />
+          <meta name="description" content="thanks" />
         </Head>
         <Nav />
         <hr />

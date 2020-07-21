@@ -38,7 +38,7 @@ You'll also need PostgreSQL for this.
 
 #### PostgreSQL Installation Instructions
 
-Follow the instructions from the PostgreSQL step on https://www.postgresql.org/docs/10/runtime.html
+Follow the instructions from the PostgreSQL step on https://github.com/upleveled/system-setup/
 
 ```
 Run the following queries inside of psql to set up the database and the user:

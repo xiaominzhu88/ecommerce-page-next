@@ -22,8 +22,9 @@ function Content(props: Props) {
   return (
     <div className="content">
       <Head>
-        <title>Ecommerce-Store</title>
+        <title>fashion</title>
         <link rel="icon" href="/favicon.png" />
+        <meta name="description" content="fashion" />
       </Head>
       <Nav />
 

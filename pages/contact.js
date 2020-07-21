@@ -7,8 +7,9 @@ function Contact() {
   return (
     <>
       <Head>
-        <title>Ecommerce-Store</title>
+        <title>contact</title>
         <link rel="icon" href="/favicon.png" />
+        <meta name="description" content="contact" />
       </Head>
       <Nav />
       <div className="contact">
