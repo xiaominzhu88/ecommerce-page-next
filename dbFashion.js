@@ -62,8 +62,7 @@ export function getPetProducts() {
 
 export async function getProductsById(id) {
   const products = await sql`
-  select * from products WHERE id = ${id}
-  
+    select * from products WHERE id = ${id}
   `;
 
   //console.log(products); // => Array
