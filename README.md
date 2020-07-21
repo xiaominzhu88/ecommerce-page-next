@@ -14,7 +14,7 @@ This project is an online fashion and pet accessory shop created with Next.js.
 
 The shop features following pages and functionality:
 
-- a products page which contains Fashion and Pet-Store items
+- a products page which contains fashion and pet accessory items
 - a page for each single product on which user is able to input quantity, the total price will be calculated
 - a shopping cart page containing a list where products appear when you click on the "add Items" button on the single product page, which also shows the total price of all products
 - after click on "to cartpage", user will be linked to a cart page which shows the total and shipping / payment information, on this page, user is able to update items quantity, or remove each item, total price and items cart will be automatically updated.
@@ -91,4 +91,3 @@ Cart Page Screenshot:
 Fashion-Shop Page Screenshot:
 
 <img src="/public/shopScreenshot.png" width="450" height="250">.
-
