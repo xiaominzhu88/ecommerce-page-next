@@ -44,7 +44,7 @@ Copy the `.env.example` file to `.env` and add the database connection informati
 
 You'll also need PostgreSQL for this.
 
-PostgreSQL Installation instructions
+#### PostgreSQL Installation Instructions
 
 Follow the instructions from the PostgreSQL step on https://www.postgresql.org/docs/10/runtime.html
 
