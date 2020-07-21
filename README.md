@@ -16,7 +16,7 @@ The shop features following pages and functionality:
 
 - a products page which contains fashion and pet accessory items
 - a page for each single product on which user is able to choose a quantity to purchase and the total price will be calculated
-- a shopping cart page containing a list where products appear when you click on the "add Items" button on the single product page, which also shows the total price of all products
+- A shopping cart page containing a list of products which have been added to the cart using the "Add Items" button on the single product page, controls to update the quantity of each item and the total price of all products
 - after click on "to cartpage", user will be linked to a cart page which shows the total and shipping / payment information, on this page, user is able to update items quantity, or remove each item, total price and items cart will be automatically updated.
 - after click on "checkout" button, user will be linked to a thank you page.
 - the header shows a shopping cart with the current number of items on all pages.
