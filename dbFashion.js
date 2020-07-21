@@ -9,7 +9,7 @@ const sql =
     ? postgres({ ssl: { rejectUnauthorized: false } })
     : postgres();
 
-const fasionProducts = [
+const fashionProducts = [
   {
     id: '1',
     className: 'dress',
