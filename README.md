@@ -49,19 +49,22 @@ PostgreSQL Installation instructions
 
 Follow the instructions from the PostgreSQL step on https://www.postgresql.org/docs/10/runtime.html
 
-- [ ] Run the following queries inside of psql to set up the database and the user:
+```
+Run the following queries inside of psql to set up the database and the user:
 
-- [ ] CREATE DATABASE nextjs_ecommerce_store;
+CREATE DATABASE nextjs_ecommerce_store;
 
-- [ ] CREATE USER nextjs_ecommerce_score WITH ENCRYPTED PASSWORD 'nextjs_ecommerce_store';
+CREATE USER nextjs_ecommerce_score WITH ENCRYPTED PASSWORD 'nextjs_ecommerce_store';
 
-- [ ] GRANT ALL PRIVILEGES ON DATABASE nextjs_ecommerce_store TO nextjs_ecommerce_score;
+GRANT ALL PRIVILEGES ON DATABASE nextjs_ecommerce_store TO nextjs_ecommerce_score;
 
-- [ ] Then, to connect to the database using this new user, quit psql and reconnect:
+Then, to connect to the database using this new user, quit psql and reconnect:
 
 \q
 
 psql -U nextjs_ecommerce_score nextjs_ecommerce_store
+
+```
 
 You can run the migrations with the following command:
 `yarn migrate up`
@@ -82,14 +85,12 @@ To drop the last migration run the following in your terminal:
 
 About Page Screenshot:
 
-<img src="/public/screenshot.png" width="500" height="350">
+<img src="/public/screenshot.png" width="500" height="350" alt='about'>
 
 Cart Page Screenshot:
 
-<img src="/public/cart.png" width="450" height="250">
+<img src="/public/cart.png" width="450" height="250" alt='cart'>
 
 Fashion-Shop Page Screenshot:
 
-<img src="/public/shopScreenshot.png" width="450" height="250">.
-
-> > > > > > > c1cde23a0ba08ecc1dd60f6972abc67238bcc0ba
+<img src="/public/shopScreenshot.png" width="450" height="250" alt='fashion'>.

@@ -12,25 +12,19 @@ function CartForPayment({ cart }) {
   const [cvcNumber, setCvcNumber] = useState('');
 
   //get Price from cookies in an Array, IF cart is UNDEFINED, then return [], else map over to get each price
-  const itemPrice =
-    cart === undefined
-      ? []
-      : cartArray.map((cartEach, i) => {
-          return cartEach.price;
-        });
+  const itemPrice = cartArray.map((cartEach, i) => {
+    return cartEach.price;
+  });
   //console.log('price', itemPrice); //price array with number
 
   // Map each price, reduce to get total sum price
   //If price is UNDEFINED, then return 0, otherwise COUNT from 0!!!!
 
-  const total =
-    itemPrice === undefined
-      ? 0
-      : itemPrice
-          //  .map((x) => Number(x.replace(/[^0-9.-]+/g, '')))
-          .reduce((a, b) => {
-            return a + b;
-          }, 0);
+  const total = itemPrice
+    //  .map((x) => Number(x.replace(/[^0-9.-]+/g, '')))
+    .reduce((a, b) => {
+      return a + b;
+    }, 0);
 
   Cookies.set('total', total);
 

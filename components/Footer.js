@@ -1,20 +1,12 @@
 import React from 'react';
-import Head from 'next/head';
 
 function Footer() {
   return (
     <>
-      <Head>
-        <title>Ecommerce-Store</title>
-        <link rel="icon" href="/favicon.png" />
-      </Head>
-
       <div className="background">
         <h2>Join our mailing list</h2>
         <form>
-          <button type="subscribe" name="subscribe" value="subscribe">
-            subscribe
-          </button>
+          <button type="button">subscribe</button>
         </form>
 
         <p>© 2023 by Zhu</p>

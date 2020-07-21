@@ -9,30 +9,30 @@ const sql =
     ? postgres({ ssl: { rejectUnauthorized: false } })
     : postgres();
 
-const fasionProducts = [
+const fashionProducts = [
   {
     id: '1',
     className: 'dress',
     src: '/4dress.jpg',
     url: '/products/1',
-    h3: 'Your closet needs at least one yellow dress',
-    p: '“Be original, show off your style, and tell your story.”',
+    headline: 'Your closet needs at least one yellow dress',
+    description: '“Be original, show off your style, and tell your story.”',
   },
   {
     id: '2',
     className: 'flowerprint',
     src: '/4huaqun.jpg',
     url: '/products/2',
-    h3: 'A Sunday well spent brings a Week of Content',
-    p: "Dress like you're Going to meet your Worst Enemy Today",
+    headline: 'A Sunday well spent brings a Week of Content',
+    description: "Dress like you're Going to meet your Worst Enemy Today",
   },
   {
     id: '3',
     className: 'jumpsuit',
     src: '/4jumpsuit.jpg',
     url: '/products/3',
-    h3: 'Jumpsuit',
-    p:
+    headline: 'Jumpsuit',
+    description:
       'Jumpsuit is great for everything from traveling or casual weekend brunch.',
   },
 
@@ -41,8 +41,8 @@ const fasionProducts = [
     className: 'ways',
     src: '/access.jpg',
     url: '/products/4',
-    h3: 'Fashion as unique as you are, be your own label...',
-    p:
+    headline: 'Fashion as unique as you are, be your own label...',
+    description:
       ' If you have no idea how to to make the combination with them, be patient, The best things happen Unexpectedly.',
   },
 ];
@@ -54,7 +54,7 @@ const petProducts = [
 ];
 
 export function getFashionProducts() {
-  return fasionProducts;
+  return fashionProducts;
 }
 export function getPetProducts() {
   return petProducts;

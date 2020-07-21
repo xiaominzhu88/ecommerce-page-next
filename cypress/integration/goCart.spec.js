@@ -7,7 +7,7 @@ context('Add to cart', () => {
     cy.get('[data-cy="addCart-button"]').click();
 
     // test at cart page if it's contains item 'dress'
-    cy.visit('http://localhost:3000/cartForPayment');
+    cy.visit('http://localhost:3000/cart');
     cy.get('[data-cy="cart-item-name"]').contains('dress');
 
     // test if remove button works
@@ -19,7 +19,7 @@ context('Add to cart', () => {
     cy.get('[data-cy="addCart-button"]').click();
     cy.get('[data-cy="go-to-cart-button"]').click();
 
-    cy.visit('http://localhost:3000/cartForPayment');
+    cy.visit('http://localhost:3000/cart');
     cy.get('[data-cy="add-one-more-button"]').click();
 
     cy.get('[data-cy="qty-cart"]').contains('6');

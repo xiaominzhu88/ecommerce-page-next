@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
-import Head from 'next/head';
 import Link from 'next/link';
 import Cookies from 'js-cookie';
 
 type CartItem = {
-  piece: Number;
-  acc: String;
-  cur: Number;
+  piece: number;
+  acc: number;
+  cur: number;
 };
 
 function Nav() {
@@ -23,30 +22,25 @@ function Nav() {
 
   // JUST FOR FUN :)
   // used api folder in pages, which contains dogs json, here useEffect to get response from /api/dogs using fetchData and return them in the console
-  useEffect(() => {
-    async function fetchData() {
-      const dogsResponse = await fetch('/api/dogs');
-      const dogsJson = await dogsResponse.json();
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const dogsResponse = await fetch('/api/dogs');
+  //     const dogsJson = await dogsResponse.json();
 
-      console.log({ dogsJson });
-    }
+  //     console.log({ dogsJson });
+  //   }
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   const cartReduce = cartItems
-    ? cartItems.reduce((acc: string, cur: CartItem) => {
+    ? cartItems.reduce((acc: number, cur: CartItem) => {
         return acc + Number(cur.piece);
       }, 0)
     : '0';
 
   return (
     <div className="App">
-      <Head>
-        <title>Ecommerce-Store</title>
-        <link rel="icon" href="/favicon.png" />
-      </Head>
-
       <nav className="nav">
         <div className="nav-bar">
           <h1>ZHU</h1>
@@ -57,16 +51,20 @@ function Nav() {
         <div className="header">
           {linkList.map((link) => {
             return (
-              <Link href={link.url} key={link.url}>
+              <Link href={link.url} key={`nav-${link.url}`}>
                 <a>{link.name}</a>
               </Link>
             );
           })}
 
           {/* Cart-Page link */}
-          <Link href="/cartForPayment">
+          <Link href="/cart">
             <a>
-              <span aria-label="emoji" className="emoji" role="img">
+              <span
+                aria-label="emoji shopping-car"
+                className="emoji"
+                role="img"
+              >
                 🛒
               </span>{' '}
               <span className="myCartSpan1">

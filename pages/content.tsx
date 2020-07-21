@@ -12,8 +12,8 @@ type FashionProductsList = {
   className: string;
   src: string;
   url: string;
-  h3: string;
-  p: string;
+  headline: string;
+  description: string;
   name: string;
 };
 type Props = { fashionProductsList: FashionProductsList[] };
@@ -43,8 +43,8 @@ function Content(props: Props) {
                     />
                   </a>
                 </Link>
-                <h3>{fashionList.h3}</h3>
-                <p>{fashionList.p}</p>
+                <h3>{fashionList.headline}</h3>
+                <p>{fashionList.description}</p>
               </div>
             </li>
           );
