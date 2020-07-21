@@ -20,7 +20,7 @@ The shop features following pages and functionality:
 - after click on "checkout" button, user will be linked to a thank you page.
 - the header is displayed on all page, and shows a shopping cart with the current number of items
 
-## Technologies used
+## Technologies Used
 
 This project is a Next.js app which makes use of PostgresQL database.
 
