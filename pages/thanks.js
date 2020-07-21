@@ -2,13 +2,14 @@ import React from 'react';
 import Head from 'next/head';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
-import Link from 'next/link';
 import Cookies from 'js-cookie';
+import Router from 'next/router';
 
 function Thanks() {
   function resetCookies() {
     Cookies.remove('cart');
     Cookies.remove('total');
+    Router.push('/about');
   }
   return (
     <div>
@@ -23,11 +24,8 @@ function Thanks() {
         <div className="thanks">
           <h1>THANK YOU!</h1>
           <h4>Your order was completed successfully</h4>
-          <Link href="/about">
-            <a>
-              <button onClick={resetCookies}>To home</button>
-            </a>
-          </Link>
+
+          <button onClick={resetCookies}>To home</button>
         </div>
       </div>
 

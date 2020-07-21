@@ -3,8 +3,8 @@ import Head from 'next/head';
 import Nav from '../../components/Nav';
 import Footer from '../../components/Footer';
 import Cookies from 'js-cookie';
-import Link from 'next/link';
 import { NextPageContext } from 'next';
+import Router from 'next/router';
 
 // using typescript: 	yarn add --dev typescript @types/node
 
@@ -17,7 +17,7 @@ type Item = {
   h3: string;
   p: string;
 };
-type Props = { items: Item };
+type Props = { item: Item };
 
 // [id] => act as the part of the Path like 'localhost:3000/users/1(which is [id]'
 const Product = (props: Props) => {
@@ -30,18 +30,18 @@ const Product = (props: Props) => {
   function changePieces(e: ChangeEvent<HTMLInputElement>) {
     const newPiece = Number(e.target.value);
     setPiece(newPiece);
-    setPrice(newPiece * props.items.price);
+    setPrice(newPiece * props.item.price);
   }
 
-  if (!props.items) return <div>Item not found!</div>;
+  if (!props.item) return <div>Item not found!</div>;
 
-  function goCart() {
+  function addProductToCart() {
     const product = {
       piece: piece,
       price: price,
-      name: props.items.name,
-      src: props.items.src,
-      id: props.items.id,
+      name: props.item.name,
+      src: props.item.src,
+      id: props.item.id,
     };
 
     const newCart = Cookies.getJSON('cart') || [];
@@ -55,31 +55,29 @@ const Product = (props: Props) => {
   return (
     <div>
       <Head>
-        <title>{props.items.name}</title>
+        <title>{props.item.name}</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
       <Nav />
 
       <main>
-        <h1>{props.items.h2}</h1>
-        <h2>{props.items.name}</h2>
-        <img src={props.items.src} alt="items" />
-        <h3>{props.items.h3}</h3>
-        <p>{props.items.p}</p>
+        <h1>{props.item.h2}</h1>
+        <h2>{props.item.name}</h2>
+        <img src={props.item.src} alt={props.item.name} />
+        <h3>{props.item.h3}</h3>
+        <p>{props.item.p}</p>
 
-        <p>Euro: {props.items.price}</p>
+        <p>Euro: {props.item.price}</p>
         <hr />
 
-        <form>
-          <input
-            type="text"
-            min="1"
-            step="10"
-            placeholder="pieces"
-            onChange={changePieces}
-            value={piece}
-          />
-        </form>
+        <input
+          type="text"
+          min="1"
+          step="10"
+          placeholder="pieces"
+          onChange={changePieces}
+          value={piece}
+        />
         <br />
         <hr />
 
@@ -87,18 +85,13 @@ const Product = (props: Props) => {
         <p>Total Price: {price} </p>
         <hr />
 
-        <button data-cy="addCart-button" onClick={() => goCart()}>
+        <button data-cy="addCart-button" onClick={() => addProductToCart()}>
           Add items
         </button>
 
-        {/* Use Typescript, for Link error add : yarn upgrade @types/react@latest  */}
-        <Link href="/cart">
-          <a>
-            <button data-cy="go-to-cart-button" className="toCartButton">
-              To CartPage
-            </button>
-          </a>
-        </Link>
+        {/* Use Router.push */}
+
+        <button onClick={() => Router.push('/cart')}>To CartPage</button>
 
         {/* show query from items which from getServerSideProps
         
@@ -204,16 +197,16 @@ export async function getServerSideProps(context: NextPageContext) {
 
   // This is the way using postgres, import function from db where require (postgres)
   const { getProductsById } = await import('../../dbFashion.js');
-  const items = await getProductsById(id);
+  const item = await getProductsById(id);
 
   console.log('item id', id);
 
-  if (items === undefined) {
+  if (item === undefined) {
     return { props: {} };
   }
   return {
     props: {
-      items: items[0],
+      item: item[0],
     },
   };
 }

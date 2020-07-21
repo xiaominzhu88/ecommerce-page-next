@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
-import Link from 'next/link';
 import nextCookies from 'next-cookies';
 import Cookies from 'js-cookie';
+import Router from 'next/router';
 
 function CartForPayment({ cart }) {
   const [cartArray, setCartArray] = useState(cart);
@@ -208,13 +208,14 @@ function CartForPayment({ cart }) {
         </div>
         <img className="paymentImg" src="/paymentCard.png" alt="payment-card" />
         <div>
-          <Link href="/thanks">
-            <button
-              onClick={() => alert('Order received,check out to our home')}
-            >
-              Check Out
-            </button>
-          </Link>
+          <button
+            onClick={() => {
+              alert('Order received,check out to our home');
+              Router.push('/thanks');
+            }}
+          >
+            Check Out
+          </button>
         </div>
       </div>
 
