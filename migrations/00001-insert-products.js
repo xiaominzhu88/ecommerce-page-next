@@ -102,7 +102,6 @@ exports.up = async (sql) => {
 
 exports.down = async (sql) => {
   sql`
-	DELETE FROM products WHERE id = 8 and id=15 and id=14 and id=13 and id=12 and id=11 and id=10 and id=9 
-	
-	`;
+	DELETE FROM products WHERE id = 8 and id=15 and id=14 and id=13 and id=12 and id=11 and id=10 and id=9
+  `;
 };
