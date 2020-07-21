@@ -32,7 +32,7 @@ Migrations are set up with Ley.
 
 It uses cookies to keep track of items in cart and their amount.
 
-Some pages and components are written using Typescript.
+Some pages and components are written using TypeScript.
 
 The project contains testing with Cypress. Deployment was carried out with Heroku.
 
