@@ -50,7 +50,7 @@ function Pet({ petProducts }) {
             );
           })}
         </ul>
-        <h3 className="drinkingdog">To have the pat with you</h3>
+        <h3 className="drinkingdog">To have the pet with you</h3>
       </div>
       <Footer />
       <style jsx>{`
