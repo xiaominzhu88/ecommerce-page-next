@@ -21,10 +21,10 @@ type Props = { item: Item };
 
 // [id] => act as the part of the Path like 'localhost:3000/users/1(which is [id]'
 const Product = (props: Props) => {
-  const [price, setPrice] = useState<number>();
+  const [price, setPrice] = useState<number>(0);
   // typescript
   // const [piece, setPiece] = useState<number | undefined>(undefined);
-  const [piece, setPiece] = useState(1);
+  const [piece, setPiece] = useState(0);
 
   // typescript error: Parameter 'e' implicitly has an 'any' type
   function changePieces(e: ChangeEvent<HTMLInputElement>) {
@@ -76,10 +76,7 @@ const Product = (props: Props) => {
           step="10"
           placeholder="pieces"
           onChange={changePieces}
-          value={piece}
         />
-        <br />
-        <hr />
 
         <p>Qty: {piece} </p>
         <p>Total Price: {price} </p>
@@ -148,9 +145,7 @@ const Product = (props: Props) => {
           font-size: 1em;
           padding: 5px;
           font-weight: bold;
-          margin-left: 2em;
           width: 4em;
-          margin-left: 1em;
         }
         button {
           margin-bottom: 1em;
@@ -164,7 +159,7 @@ const Product = (props: Props) => {
           font-family: cursive;
           font-size: 1em;
           font-weight: bold;
-          outline: none;
+          border: none;
         }
         button:hover {
           background-color: yellow;
