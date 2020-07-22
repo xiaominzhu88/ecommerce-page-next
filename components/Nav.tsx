@@ -35,7 +35,7 @@ function Nav() {
 
   const cartReduce = cartItems
     ? cartItems.reduce((acc: number, cur: CartItem) => {
-        return acc + cur.piece;
+        return acc + Number(cur.piece);
       }, 0)
     : '0';
 
