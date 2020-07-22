@@ -19,37 +19,32 @@ function Footer() {
           background-size: 100% 100%;
           padding-bottom: 1em;
           padding-top: 0.6em;
+          text-align: center;
         }
         .dogge .background {
           background-image: url('/bgcCool.jpg');
         }
-        .background h2 {
-          font-family:Didot, serif;
+        h2 {
+          font-family:monospace;
           text-align: center;
           color: white;
           font-size: 40px;
         }
-        .background form {
-          text-align: center;
-        }
+       
        p {
           text-align: center;
           font-weight: bold;
-          font-family:Didot, serif;
+          font-family:monospace;
           color:#fff;
 
         }
-
-        input {
-          margin-left: 1em;
-        }
         button {
-          height:2em;
           width:10%;
           font-weight:bold;
           cursor:pointer;
+
         }
-        @media only screen and (max-width: 450px) {
+        @media (max-width: 450px) {
         .background{
           position: fixed;
           bottom:10px;
@@ -58,9 +53,7 @@ function Footer() {
           height:10em;
         }
        
-        button {
-          color:#fff;
-        }
+        
       }
       `}</style>
     </>

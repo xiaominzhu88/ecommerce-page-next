@@ -17,14 +17,9 @@ function Pet({ petProducts }) {
       <Nav />
 
       <div className="drinkingdog">
-        <img
-          src="/4loladrink.jpg"
-          width="200px"
-          height="100px"
-          alt="drinkingdog"
-        />
-        <img src="/4workadog.jpg" width="150px" height="190px" alt="workdog" />
-        <img src="/4dog.jpg" width="150px" height="300px" alt="dog" />
+        <img src="/4loladrink.jpg" width="200" height="100" alt="drinkingdog" />
+        <img src="/4workadog.jpg" width="150" height="190" alt="workdog" />
+        <img src="/4dog.jpg" width="150" height="300" alt="dog" />
         <h3>Make your pet smile</h3>
         <hr />
         <p>

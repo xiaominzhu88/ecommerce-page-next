@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 
 // Page that links to each item page
 
-function Dogge({ petLists }) {
+function Dogge({ petProductList }) {
   return (
     <div>
       <Head>
@@ -18,16 +18,16 @@ function Dogge({ petLists }) {
       <div className="dogge">
         <div className="dogge-page">
           <ul>
-            {petLists.map((list) => {
+            {petProductList.map((petProduct) => {
               return (
-                <li key={list.id}>
-                  <Link href={list.url}>
+                <li key={petProduct.id}>
+                  <Link href={petProduct.url}>
                     <a>
-                      <p>{list.className}</p>
+                      <p>{petProduct.className}</p>
                       <img
-                        className={list.className}
-                        src={list.src}
-                        alt={list.className}
+                        className={petProduct.className}
+                        src={petProduct.src}
+                        alt={petProduct.className}
                       />
                     </a>
                   </Link>
@@ -86,11 +86,9 @@ export default Dogge;
 export async function getServerSideProps(context) {
   const { getPetProducts } = await import('../dbFashion');
 
-  const petLists = getPetProducts(context.params);
-  if (petLists === undefined) {
-    return { props: {} };
-  }
+  const petProductList = getPetProducts();
+
   return {
-    props: { petLists },
+    props: { petProductList },
   };
 }

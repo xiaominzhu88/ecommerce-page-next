@@ -7,7 +7,7 @@ import { NextPageContext } from 'next';
 
 // using typescript: 	yarn add --dev typescript @types/node
 
-type FashionProductsList = {
+type fashionProduct = {
   id: string;
   className: string;
   src: string;
@@ -16,7 +16,7 @@ type FashionProductsList = {
   description: string;
   name: string;
 };
-type Props = { fashionProductsList: FashionProductsList[] };
+type Props = { fashionProduct: fashionProduct[] };
 
 function Content(props: Props) {
   return (
@@ -29,23 +29,23 @@ function Content(props: Props) {
       <Nav />
 
       <ul>
-        {props.fashionProductsList.map((fashionList) => {
+        {props.fashionProduct.map((fashionItem) => {
           return (
-            <li className={fashionList.className} key={fashionList.id}>
-              <div className={fashionList.className}>
+            <li className={fashionItem.className} key={fashionItem.id}>
+              <div className={fashionItem.className}>
                 {/* Use Typescript, for Link error add : yarn upgrade @types/react@latest  */}
-                <Link href={fashionList.url}>
+                <Link href={fashionItem.url}>
                   <a>
                     <img
-                      src={fashionList.src}
-                      alt={fashionList.className}
+                      src={fashionItem.src}
+                      alt={fashionItem.className}
                       width="150px"
                       height="300px"
                     />
                   </a>
                 </Link>
-                <h3>{fashionList.headline}</h3>
-                <p>{fashionList.description}</p>
+                <h3>{fashionItem.headline}</h3>
+                <p>{fashionItem.description}</p>
               </div>
             </li>
           );
@@ -129,11 +129,9 @@ export default Content;
 export async function getServerSideProps(context: NextPageContext) {
   const { getFashionProducts } = await import('../dbFashion.js');
 
-  const fashionProductsList = getFashionProducts();
-  if (fashionProductsList === undefined) {
-    return { props: {} };
-  }
+  const fashionProduct = getFashionProducts();
+
   return {
-    props: { fashionProductsList },
+    props: { fashionProduct },
   };
 }
