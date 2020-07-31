@@ -157,7 +157,7 @@ function Nav() {
           top: 10px;
         }
 
-        @media only screen and (max-width: 450px) {
+        @media only screen and (max-width: 500px) {
           h1 {
             font-size: 1.8em;
           }
@@ -179,7 +179,7 @@ function Nav() {
           .header {
             display: flex;
             height: 30px;
-            top: 18em;
+            top: 20em;
           }
         }
       `}</style>

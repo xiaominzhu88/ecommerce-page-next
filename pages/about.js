@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import Footer from '../components/Footer';
 import Nav from '../components/Nav';
 
 function About() {
@@ -38,7 +37,6 @@ function About() {
           -Coco Chanel
         </p>
       </div>
-      <Footer />
       <style jsx>{`
         .about-us {
           margin-top: 2.5em;
@@ -78,7 +76,6 @@ function About() {
         @media only screen and (max-width: 450px) {
           .about-us {
             margin: 10em;
-            text-align: center;
           }
 
           .blog {
@@ -91,9 +88,9 @@ function About() {
           }
         }
         .about {
-          display: flex;
-          flex-direction: column;
-          margin-bottom: 2em;
+          display: block;
+
+          margin: 1em;
         }
       `}</style>
     </>

@@ -97,7 +97,6 @@ const Product = (props: Props) => {
 
       <Footer />
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bitter:ital@1&display=swap');
         main {
           margin: 0 auto;
           display: flex;
@@ -169,6 +168,19 @@ const Product = (props: Props) => {
         button:active {
           transition: transformY(4px);
           background-color: rgb(235, 208, 121);
+        }
+        @media (max-width: 500px) {
+          main {
+            padding: 10em;
+            margin: 2.5em auto;
+          }
+          img {
+            width: 180px;
+            height: 180px;
+          }
+          p {
+            font-size: 20px;
+          }
         }
       `}</style>
     </div>

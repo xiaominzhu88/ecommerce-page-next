@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Footer from '../components/Footer';
+//import Footer from '../components/Footer';
 import Nav from '../components/Nav';
 import Link from 'next/link';
 import { NextPageContext } from 'next';
@@ -52,7 +52,7 @@ function Content(props: Props) {
         })}
       </ul>
 
-      <Footer />
+      {/* <Footer /> */}
       <style jsx>{`
         ul {
           display: flex;
@@ -119,6 +119,16 @@ function Content(props: Props) {
           margin-top: -45px;
           margin-left: -90%;
           width: auto;
+        }
+        @media (max-width: 500px) {
+          ul {
+            display: flex;
+            flex-direction: column;
+            padding: 10em;
+          }
+          li {
+            margin: 1em;
+          }
         }
       `}</style>
     </div>

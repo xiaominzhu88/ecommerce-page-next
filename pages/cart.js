@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
 import Nav from '../components/Nav';
-import Footer from '../components/Footer';
+//import Footer from '../components/Footer';
 import nextCookies from 'next-cookies';
 import Cookies from 'js-cookie';
 import Router from 'next/router';
@@ -139,7 +139,11 @@ function CartForPayment({ cart }) {
                 {' '}
                 Price: {cartEach.price},00{' '}
               </li>
-              <button data-cy="remove-button" onClick={() => removeCookie(i)}>
+              <button
+                className="remove-button"
+                data-cy="remove-button"
+                onClick={() => removeCookie(i)}
+              >
                 remove
               </button>
             </div>
@@ -220,7 +224,7 @@ function CartForPayment({ cart }) {
         </div>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
       <style jsx>{`
         .itemsSpan {
           font-size: 1em;
@@ -324,6 +328,41 @@ function CartForPayment({ cart }) {
           width: 12em;
           height: 3em;
           margin: 1em auto;
+        }
+        @media (max-width: 500px) {
+          .cart {
+            position: absolute;
+            margin-top: 10em;
+          }
+          ul {
+            padding: 10em;
+          }
+          .itemCart {
+            width: 100vw;
+          }
+          li {
+            margin: 1em;
+          }
+          .remove-button {
+            position: absolute;
+            margin-top: 8em;
+          }
+          .payment-shipment {
+            width: 100vw;
+            padding: 9em;
+          }
+          form {
+            width: 100vw;
+          }
+          .delivery {
+            margin: 1em;
+          }
+          .label {
+            text-align: center;
+          }
+          p {
+            font-size: 1.2em;
+          }
         }
       `}</style>
     </div>

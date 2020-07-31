@@ -44,7 +44,7 @@ function Footer() {
           cursor:pointer;
 
         }
-        @media (max-width: 450px) {
+        @media (max-width: 500px) {
         .background{
           position: fixed;
           bottom:10px;

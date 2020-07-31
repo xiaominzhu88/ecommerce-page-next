@@ -76,6 +76,15 @@ function Dogge({ petProductList }) {
           color: hotpink;
           text-decoration: inherit;
         }
+        @media (max-width: 500px) {
+          .dogge {
+            padding: 10em;
+          }
+          ul {
+            display: block;
+            padding: 2em;
+          }
+        }
       `}</style>
     </div>
   );

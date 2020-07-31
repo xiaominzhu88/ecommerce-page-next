@@ -50,6 +50,15 @@ function Contact() {
           font-weight: 900;
           list-style: none;
         }
+        @media (max-width: 500px) {
+          .contact {
+            padding: 10em;
+            position: absolute;
+            margin: 12em auto;
+            width: 100vw;
+        }
+          }
+        }
       `}</style>
     </>
   );

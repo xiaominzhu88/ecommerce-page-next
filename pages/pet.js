@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Footer from '../components/Footer';
+//import Footer from '../components/Footer';
 import Nav from '../components/Nav';
 import Link from 'next/link';
 
@@ -52,7 +52,7 @@ function Pet({ petProducts }) {
         </ul>
         <h3 className="drinkingdog">To have the pet with you</h3>
       </div>
-      <Footer />
+      {/* <Footer /> */}
       <style jsx>{`
         .dog h3 {
           font-style: italic;
@@ -127,6 +127,16 @@ function Pet({ petProducts }) {
           padding: 50px 0;
           margin: 0;
         }
+        @media (max-width: 500px) {
+          .drinkingdog {
+            padding: 18em;
+            margin-top: 12em;
+          }
+          .dog {
+            padding: 16em;
+            margin-top: 0;
+          }
+        }
       `}</style>
     </>
   );
@@ -137,7 +147,7 @@ export default Pet;
 export async function getServerSideProps(context) {
   const { getPetProducts } = await import('../dbFashion.js');
 
-  const petProducts = getPetProducts(context.params);
+  const petProducts = getPetProducts();
   if (petProducts === undefined) {
     return { props: {} };
   }
